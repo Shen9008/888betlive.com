@@ -616,6 +616,14 @@ main { padding-top: var(--header-offset); }
 .prose li { margin-bottom: 0.4rem; }
 .prose strong { color: var(--text-primary); font-weight: 600; }
 .prose a { text-decoration: underline; text-underline-offset: 2px; }
+.prose .trust-list {
+    margin: 1rem 0 1.25rem;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+.prose .trust-list li { margin-bottom: 0.5rem; }
+.prose .trust-list a { font-weight: 600; }
 
 /* FAQ accordion (help) */
 .faq-item {
@@ -679,6 +687,47 @@ main { padding-top: var(--header-offset); }
 .footer__links a { color: var(--text-secondary); font-size: 0.9rem; }
 @media (hover: hover) and (pointer: fine) {
     .footer__links a:hover { color: var(--primary); }
+}
+
+.footer__trust {
+    margin-top: 2rem;
+    padding: 1.35rem 1.25rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    background: linear-gradient(165deg, rgba(234, 88, 12, 0.06) 0%, var(--card-bg) 55%);
+}
+.footer__trust-heading {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+.footer__trust-intro {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    max-width: 62ch;
+    line-height: 1.55;
+}
+.footer__trust-list {
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+}
+@media (min-width: 640px) {
+    .footer__trust-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.45rem 1.5rem;
+    }
+}
+.footer__trust-list a {
+    color: var(--accent);
+    font-weight: 600;
+}
+.footer__trust-note {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.8rem;
 }
 
 .responsible-gaming {
