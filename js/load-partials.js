@@ -84,8 +84,10 @@
                 }
             }
             setActiveNav();
+            window.dispatchEvent(new CustomEvent('888betlive:partials'));
         }).catch(function () {
             setActiveNav();
+            window.dispatchEvent(new CustomEvent('888betlive:partials'));
         });
     }
 

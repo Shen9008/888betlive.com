@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    var WIN_ROTATE_MS = 5500;
+    var WIN_ROTATE_MS = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 12000 : 5500;
 
     var WIN_SAMPLES = [
         { user: 'StarRider_88', amount: '42,180', game: 'Gates of Olympus', type: 'slot' },
