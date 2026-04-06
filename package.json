@@ -1,0 +1,12 @@
+{
+  "name": "888betlive-website",
+  "version": "1.0.0",
+  "description": "888bet Live – Online casino (slots, live casino, table games)",
+  "scripts": {
+    "start": "npx --yes serve . -p 5173",
+    "deploy": "npx wrangler pages deploy . --project-name=888betlive"
+  },
+  "keywords": ["888bet", "888bet live", "online casino", "slots", "live casino"],
+  "author": "",
+  "license": "UNLICENSED"
+}
