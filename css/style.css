@@ -831,15 +831,92 @@ main { padding-top: var(--header-offset); }
 
 /* Live wins ticker */
 .win-ticker-section {
-    padding: 0.65rem 0;
-    background: linear-gradient(90deg, rgba(234, 88, 12, 0.1) 0%, rgba(0, 0, 0, 0.96) 38%, rgba(251, 146, 60, 0.05) 100%);
+    padding: 1.25rem 0;
+    background: radial-gradient(ellipse 90% 140% at 50% 45%, rgba(234, 88, 12, 0.14) 0%, rgba(5, 5, 5, 0.98) 52%, #050505 100%);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
+}
+.win-ticker-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@keyframes win-ticker-sparkle {
+    0%, 100% { opacity: 0.38; filter: brightness(1); }
+    35% { opacity: 0.72; filter: brightness(1.2); }
+    70% { opacity: 0.48; }
+}
+@keyframes win-ticker-shimmer {
+    0% { background-position: 160% 0; }
+    100% { background-position: -60% 0; }
+}
+.win-ticker-shell {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 1.2rem 1.35rem 1.05rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background:
+        linear-gradient(168deg, #141414 0%, #0a0a0a 55%, #080808 100%) padding-box,
+        linear-gradient(135deg, #fde68a 0%, #f59e0b 22%, #ea580c 48%, #fcd34d 72%, #d97706 100%) border-box;
+    border: 2px solid transparent;
+    background-clip: padding-box, border-box;
+    box-shadow:
+        0 0 0 1px rgba(251, 191, 36, 0.25),
+        0 0 32px rgba(234, 88, 12, 0.22),
+        0 0 56px rgba(251, 146, 60, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+.win-ticker-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(1.5px 1.5px at 12% 22%, rgba(255, 255, 255, 0.95) 50%, transparent 52%),
+        radial-gradient(1.5px 1.5px at 88% 18%, rgba(255, 253, 231, 0.9) 50%, transparent 52%),
+        radial-gradient(1px 1px at 28% 78%, rgba(254, 243, 199, 0.85) 50%, transparent 52%),
+        radial-gradient(1px 1px at 72% 82%, rgba(255, 255, 255, 0.9) 50%, transparent 52%),
+        radial-gradient(1px 1px at 48% 38%, rgba(253, 230, 138, 0.75) 50%, transparent 52%),
+        radial-gradient(1px 1px at 65% 55%, rgba(255, 255, 255, 0.65) 50%, transparent 52%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    animation: win-ticker-sparkle 2.8s ease-in-out infinite;
+}
+.win-ticker-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        100deg,
+        transparent 0%,
+        transparent 42%,
+        rgba(255, 251, 235, 0.14) 50%,
+        transparent 58%,
+        transparent 100%
+    );
+    background-size: 55% 100%;
+    background-position: 160% 0;
+    background-repeat: no-repeat;
+    animation: win-ticker-shimmer 4s ease-in-out infinite;
+    opacity: 0.85;
+}
+.win-ticker-shell > .win-ticker,
+.win-ticker-shell > .win-ticker__note {
+    position: relative;
+    z-index: 1;
 }
 .win-ticker {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem 1rem;
     font-size: 0.88rem;
 }
@@ -861,11 +938,12 @@ main { padding-top: var(--header-offset); }
     50% { opacity: 0.65; }
 }
 .win-ticker__body {
-    flex: 1;
+    flex: 0 1 auto;
     min-width: min(100%, 200px);
     color: var(--text-secondary);
     transition: opacity 0.35s ease;
     word-break: break-word;
+    text-align: center;
 }
 .win-ticker__body.is-updating { opacity: 0.45; }
 .win-ticker__user { color: var(--accent); font-weight: 700; }
@@ -879,7 +957,8 @@ main { padding-top: var(--header-offset); }
     font-size: 0.75rem;
     color: var(--text-muted);
     width: 100%;
-    margin-top: 0.15rem;
+    margin-top: 0.45rem;
+    text-align: center;
 }
 
 /* Horizontal scroll rows */
@@ -1668,6 +1747,8 @@ body.has-custom-cursor .category-card {
     }
     .game-tile__thumb { animation: none !important; }
     .win-ticker__pulse { animation: none !important; }
+    .win-ticker-shell::before,
+    .win-ticker-shell::after { animation: none !important; opacity: 0.45; }
     .hero__title { animation: none !important; }
     .page-loader__ring { animation: none !important; }
     #page-loader { transition: none; }
