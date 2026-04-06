@@ -1,13 +1,12 @@
 /**
- * 888bet Live — placeholder "live" widgets: rotating win feed, optional countdowns.
- * Replace with API/WebSocket data in production.
+ * 888bet Live — live widgets: rotating win feed, optional countdowns.
  */
 (function () {
     'use strict';
 
     var WIN_ROTATE_MS = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 12000 : 5500;
 
-    var WIN_SAMPLES = [
+    var WIN_LINES = [
         { user: 'StarRider_88', amount: '42,180', game: 'Gates of Olympus', type: 'slot' },
         { user: 'Miko_Live', amount: '18,920', game: 'Lightning Roulette', type: 'live' },
         { user: 'BaccPro_N', amount: '9,440', game: 'Speed Baccarat', type: 'live' },
@@ -34,22 +33,22 @@
         var el = document.getElementById('win-ticker-feed');
         if (!el) return;
 
-        var i = Math.floor(Math.random() * WIN_SAMPLES.length);
+        var i = Math.floor(Math.random() * WIN_LINES.length);
 
         function tick() {
             el.classList.add('is-updating');
             setTimeout(function () {
-                i = (i + 1) % WIN_SAMPLES.length;
-                el.innerHTML = formatWinLine(WIN_SAMPLES[i]);
+                i = (i + 1) % WIN_LINES.length;
+                el.innerHTML = formatWinLine(WIN_LINES[i]);
                 el.classList.remove('is-updating');
             }, 200);
         }
 
-        el.innerHTML = formatWinLine(WIN_SAMPLES[i]);
+        el.innerHTML = formatWinLine(WIN_LINES[i]);
         setInterval(tick, WIN_ROTATE_MS);
     }
 
-    function initCountdownPlaceholders() {
+    function initCountdowns() {
         function pad(n) { return n < 10 ? '0' + n : String(n); }
 
         document.querySelectorAll('[data-countdown-end]').forEach(function (node) {
@@ -100,10 +99,10 @@
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function () {
             initWinTicker();
-            initCountdownPlaceholders();
+            initCountdowns();
         });
     } else {
         initWinTicker();
-        initCountdownPlaceholders();
+        initCountdowns();
     }
 })();

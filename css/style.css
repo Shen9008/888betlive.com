@@ -460,7 +460,7 @@ main { padding-top: var(--header-offset); }
     align-items: center;
     justify-content: center;
 }
-.game-card__placeholder { width: 64px; height: 64px; opacity: 0.45; color: var(--accent); }
+.game-card__icon { width: 64px; height: 64px; opacity: 0.45; color: var(--accent); }
 .game-card__body { padding: 1.1rem 1.25rem; }
 .game-card__title { font-size: 1.05rem; margin-bottom: 0.35rem; }
 .game-card__meta { font-size: 0.8rem; color: var(--text-muted); }

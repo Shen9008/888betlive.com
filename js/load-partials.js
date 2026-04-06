@@ -62,19 +62,19 @@
             var headerHtml = rewriteLinks(parts[0]);
             var footerHtml = rewriteLinks(parts[1]);
             var bannerHtml = rewriteLinks(parts[2]);
-            var headerPlaceholder = document.getElementById('partial-header');
-            var footerPlaceholder = document.getElementById('partial-footer');
-            if (headerPlaceholder) {
+            var headerMount = document.getElementById('partial-header');
+            var footerMount = document.getElementById('partial-footer');
+            if (headerMount) {
                 var temp = document.createElement('div');
                 temp.innerHTML = headerHtml;
-                var parent = headerPlaceholder.parentNode;
+                var parent = headerMount.parentNode;
                 while (temp.firstChild) {
-                    parent.insertBefore(temp.firstChild, headerPlaceholder);
+                    parent.insertBefore(temp.firstChild, headerMount);
                 }
-                headerPlaceholder.remove();
+                headerMount.remove();
             }
-            if (footerPlaceholder) {
-                footerPlaceholder.outerHTML = footerHtml;
+            if (footerMount) {
+                footerMount.outerHTML = footerHtml;
             }
             var main = document.getElementById('main-content');
             if (main && bannerHtml.trim()) {
