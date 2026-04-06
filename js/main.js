@@ -1,15 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
+    function setMenuOpen(isOpen) {
+        var menu = document.querySelector('.mobile-menu');
+        var toggle = document.querySelector('.mobile-menu-toggle');
+        if (!menu || !toggle) return;
+        menu.classList.toggle('active', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        var use = toggle.querySelector('use');
+        if (use) {
+            use.setAttribute('href', isOpen ? '#icon-close' : '#icon-menu');
+        }
+    }
+
     document.body.addEventListener('click', function (e) {
         var toggle = e.target.closest('.mobile-menu-toggle');
         if (!toggle) return;
         var menu = document.querySelector('.mobile-menu');
         if (menu) {
-            menu.classList.toggle('active');
-            var isOpen = menu.classList.contains('active');
-            var use = toggle.querySelector('use');
-            if (use) {
-                use.setAttribute('href', isOpen ? '#icon-close' : '#icon-menu');
-            }
+            setMenuOpen(!menu.classList.contains('active'));
         }
     });
 
@@ -26,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     menu.classList.remove('active');
                     var t = document.querySelector('.mobile-menu-toggle');
                     if (t) {
+                        t.setAttribute('aria-expanded', 'false');
+                        t.setAttribute('aria-label', 'Open menu');
                         var u = t.querySelector('use');
                         if (u) u.setAttribute('href', '#icon-menu');
                     }
@@ -39,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!header) return;
         window.addEventListener('scroll', function () {
             var y = window.pageYOffset;
-            header.style.background = y > 80 ? 'rgba(7, 9, 15, 0.98)' : 'rgba(7, 9, 15, 0.92)';
+            header.style.background = y > 80 ? 'rgba(0, 0, 0, 0.97)' : 'rgba(0, 0, 0, 0.94)';
         });
     }
     initHeaderScroll();
