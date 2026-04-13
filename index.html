@@ -40,12 +40,18 @@
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": "https://888betlive.com/#website",
         "name": "888bet Live",
         "url": "https://888betlive.com/",
         "description": "888bet Live online casino: 888bet slots, live casino, table games, and promotions.",
+        "inLanguage": "en-US",
+        "publisher": { "@id": "https://888betlive.com/#organization" },
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://888betlive.com/help-center.html?q={search_term_string}",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://888betlive.com/help-center.html?q={search_term_string}"
+            },
             "query-input": "required name=search_term_string"
         }
     }
@@ -54,6 +60,7 @@
     {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": "https://888betlive.com/#organization",
         "name": "888bet Live",
         "url": "https://888betlive.com/",
         "description": "Online casino brand focused on 888bet-style slots, live dealers, and table games.",
@@ -84,6 +91,20 @@
         "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://888betlive.com/" }
         ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://888betlive.com/#webpage",
+        "name": "888bet Live | Online Casino — Slots, Live Dealers and Table Games",
+        "description": "888bet Live: premium 888bet casino lobby with slots, live casino, and RNG table games. Explore 888bet promotions, fast payouts, and 24/7 help.",
+        "url": "https://888betlive.com/",
+        "inLanguage": "en-US",
+        "isPartOf": { "@id": "https://888betlive.com/#website" },
+        "publisher": { "@id": "https://888betlive.com/#organization" },
+        "about": { "@id": "https://888betlive.com/#organization" }
     }
     </script>
 </head>
