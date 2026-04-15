@@ -364,14 +364,14 @@ main { padding-top: var(--header-offset); }
     background-size: cover;
     background-position: center;
 }
-body[data-page="index"] .hero { --hero-photo: url("../images/webp/hero-banners/home.webp"); }
-body[data-page="slots"] .hero { --hero-photo: url("../images/webp/hero-banners/slot.webp"); }
-body[data-page="live-casino"] .hero { --hero-photo: url("../images/webp/hero-banners/live-casino.webp"); }
-body[data-page="table-games"] .hero { --hero-photo: url("../images/webp/hero-banners/table-games.webp"); }
-body[data-page="promotions"] .hero { --hero-photo: url("../images/webp/hero-banners/promotions.webp"); }
-body[data-page="about-us"] .hero { --hero-photo: url("../images/webp/hero-banners/about-us.webp"); }
-body[data-page="help-center"] .hero { --hero-photo: url("../images/webp/hero-banners/help-center.webp"); }
-body[data-page="terms"] .hero { --hero-photo: url("../images/webp/hero-banners/terms.webp"); }
+body[data-page="index"] .hero { --hero-photo: url("/images/webp/hero-banners/home.webp"); }
+body[data-page="slots"] .hero { --hero-photo: url("/images/webp/hero-banners/slot.webp"); }
+body[data-page="live-casino"] .hero { --hero-photo: url("/images/webp/hero-banners/live-casino.webp"); }
+body[data-page="table-games"] .hero { --hero-photo: url("/images/webp/hero-banners/table-games.webp"); }
+body[data-page="promotions"] .hero { --hero-photo: url("/images/webp/hero-banners/promotions.webp"); }
+body[data-page="about-us"] .hero { --hero-photo: url("/images/webp/hero-banners/about-us.webp"); }
+body[data-page="help-center"] .hero { --hero-photo: url("/images/webp/hero-banners/help-center.webp"); }
+body[data-page="terms"] .hero { --hero-photo: url("/images/webp/hero-banners/terms.webp"); }
 .hero .container { position: relative; z-index: 2; }
 .hero__badge {
     display: inline-block;
