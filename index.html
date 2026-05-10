@@ -16,10 +16,13 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#000000">
-    <link rel="icon" href="/images/webp/favicon.webp" type="image/webp">
+    <link rel="icon" href="/images/favicon.jpg" type="image/jpeg">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="canonical" href="https://888betlive.com/">
+    <!-- SEO / perf: LCP hero preload (WebP; JPEG fallback in CSS image-set) -->
+    <link rel="preload" as="image" href="/images/hero-banners/home.webp" type="image/webp">
+
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://888betlive.com/sitemap.xml">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="888bet Live">
@@ -33,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.min.css">
     <script defer src="js/load-partials.js"></script>
     <script defer src="js/main.js"></script>
     <script defer src="js/widgets.js"></script>
@@ -149,33 +152,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="ongoing-strip">
                     <article class="ongoing-card ongoing-card--hot" data-animate>
-                        <div class="ongoing-card__visual ongoing-card__visual--promo" aria-hidden="true"><img src="/images/webp/promos/hot-promotion-banners/weekend-reload.webp" alt="" width="200" height="144" loading="lazy" decoding="async"></div>
-                        <div>
-                            <p class="ongoing-card__tag">Live now</p>
-                            <h3>Weekend reload + spins</h3>
-                            <p>Match + free spins on selected Megaways. 18+ T&amp;Cs.</p>
-                            <p class="ongoing-card__time" data-countdown-hours="72">—</p>
-                            <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--sm" style="margin-top:0.5rem;padding:0.45rem 0.9rem;font-size:0.75rem;">Details</a>
+                        <div class="ongoing-card__media ongoing-card__media--promo">
+                            <picture>
+<source type="image/webp" srcset="/images/promos/all-ongoing-promotions/free-spin.webp" /><img src="/images/promos/all-ongoing-promotions/free-spin.jpg" alt="Midweek free spins promotional banner at 888bet Live." width="560" height="280" loading="lazy" decoding="async">
+</picture>
+                            <span class="ongoing-card__pill">Live now</span>
+                        </div>
+                        <div class="ongoing-card__body">
+                            <h3>Midweek free spins</h3>
+                            <p class="ongoing-card__desc">Wager €50 on Pragmatic titles → 50 spins next day.</p>
+                            <div class="ongoing-card__meta">
+                                <p class="ongoing-card__time" data-countdown-hours="36">—</p>
+                                <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--sm">Spin details</a>
+                            </div>
                         </div>
                     </article>
                     <article class="ongoing-card" data-animate>
-                        <div class="ongoing-card__visual" aria-hidden="true"><img src="/images/webp/promos/hot-promotion-banners/live-golden-hour.webp" alt="" width="200" height="144" loading="lazy" decoding="async"></div>
-                        <div>
-                            <p class="ongoing-card__tag">Live now</p>
-                            <h3>Live chips drop</h3>
-                            <p>Bonus chips for roulette &amp; blackjack tables—stake rules apply.</p>
-                            <p class="ongoing-card__time" data-countdown-hours="48">—</p>
-                            <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--outline btn--sm" style="margin-top:0.5rem;padding:0.45rem 0.9rem;font-size:0.75rem;">Live lobby</a>
+                        <div class="ongoing-card__media">
+                            <picture>
+<source type="image/webp" srcset="/images/promos/all-ongoing-promotions/slot-races.webp" /><img src="/images/promos/all-ongoing-promotions/slot-races.jpg" alt="Roulette races leaderboard promotion at 888bet Live." width="560" height="280" loading="lazy" decoding="async">
+</picture>
+                            <span class="ongoing-card__pill">Live</span>
+                        </div>
+                        <div class="ongoing-card__body">
+                            <h3>Roulette races</h3>
+                            <p class="ongoing-card__desc">Highest net win in window wins leaderboard prizes.</p>
+                            <div class="ongoing-card__meta">
+                                <p class="ongoing-card__time" data-countdown-hours="12">—</p>
+                                <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--sm">Race rules</a>
+                            </div>
                         </div>
                     </article>
                     <article class="ongoing-card" data-animate>
-                        <div class="ongoing-card__visual" aria-hidden="true"><img src="/images/webp/promos/all-ongoing-promotions/vip-boost.webp" alt="" width="200" height="144" loading="lazy" decoding="async"></div>
-                        <div>
-                            <p class="ongoing-card__tag">Ending soon</p>
-                            <h3>Jackpot chase hour</h3>
-                            <p>Extra entries on linked progressives during the window.</p>
-                            <p class="ongoing-card__time" data-countdown-hours="6">—</p>
-                            <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--sm" style="margin-top:0.5rem;padding:0.45rem 0.9rem;font-size:0.75rem;">Jackpot slots</a>
+                        <div class="ongoing-card__media">
+                            <picture>
+<source type="image/webp" srcset="/images/promos/all-ongoing-promotions/vip-boost.webp" /><img src="/images/promos/all-ongoing-promotions/vip-boost.jpg" alt="VIP tier boost weekend loyalty promotion at 888bet Live." width="560" height="280" loading="lazy" decoding="async">
+</picture>
+                            <span class="ongoing-card__pill">VIP</span>
+                        </div>
+                        <div class="ongoing-card__body">
+                            <h3>Tier boost weekend</h3>
+                            <p class="ongoing-card__desc">Double loyalty points on table RNG + live.</p>
+                            <div class="ongoing-card__meta">
+                                <p class="ongoing-card__time" data-countdown-hours="96">—</p>
+                                <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--sm">VIP offers</a>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -189,10 +210,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p class="section__subtitle">Trending 888bet slots this week—Megaways, jackpots &amp; instant games.</p>
                 </div>
                 <div class="scroll-row-wrap">
-                    <div class="scroll-row" role="list">
+                    <div class="scroll-row scroll-row--fill" role="list">
                         <article class="game-tile" role="listitem" data-animate>
                             <div class="game-tile__thumb game-tile__thumb--megaways">
-                                <img class="game-tile__cover" src="/images/webp/game-card/home/popular-slots/aztec-megaways.webp" alt="" width="220" height="138" loading="lazy" decoding="async">
+                                <picture>
+<source type="image/webp" srcset="/images/game-card/home/popular-slots/aztec-megaways.webp" /><img class="game-tile__cover" src="/images/game-card/home/popular-slots/aztec-megaways.jpg" alt="Aztec Megaways — slot or table game thumbnail on 888bet Live." width="220" height="138" loading="lazy" decoding="async">
+</picture>
                                 <div class="game-tile__badges"><span class="category-badge category-badge--hot">Hot</span></div>
                                 <svg class="game-tile__ph" aria-hidden="true"><use href="#icon-slot"/></svg>
                             </div>
@@ -203,7 +226,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </article>
                         <article class="game-tile" role="listitem" data-animate>
                             <div class="game-tile__thumb game-tile__thumb--jackpot">
-                                <img class="game-tile__cover" src="/images/webp/game-card/home/popular-slots/empire-gold-link.webp" alt="" width="220" height="138" loading="lazy" decoding="async">
+                                <picture>
+<source type="image/webp" srcset="/images/game-card/home/popular-slots/empire-gold-link.webp" /><img class="game-tile__cover" src="/images/game-card/home/popular-slots/empire-gold-link.jpg" alt="Empire Gold Link — slot or table game thumbnail on 888bet Live." width="220" height="138" loading="lazy" decoding="async">
+</picture>
                                 <div class="game-tile__badges"><span class="category-badge">Jackpot</span></div>
                                 <svg class="game-tile__ph" aria-hidden="true"><use href="#icon-slot"/></svg>
                             </div>
@@ -214,7 +239,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </article>
                         <article class="game-tile" role="listitem" data-animate>
                             <div class="game-tile__thumb game-tile__thumb--holdwin">
-                                <img class="game-tile__cover" src="/images/webp/game-card/home/popular-slots/royal-coins-2.webp" alt="" width="220" height="138" loading="lazy" decoding="async">
+                                <picture>
+<source type="image/webp" srcset="/images/game-card/home/popular-slots/royal-coins-2.webp" /><img class="game-tile__cover" src="/images/game-card/home/popular-slots/royal-coins-2.jpg" alt="Royal Coins 2 — slot or table game thumbnail on 888bet Live." width="220" height="138" loading="lazy" decoding="async">
+</picture>
                                 <span class="category-badge">Hold &amp; Win</span>
                                 <svg class="game-tile__ph" aria-hidden="true"><use href="#icon-slot"/></svg>
                             </div>
@@ -225,7 +252,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </article>
                         <article class="game-tile" role="listitem" data-animate>
                             <div class="game-tile__thumb game-tile__thumb--bonusbuy">
-                                <img class="game-tile__cover" src="/images/webp/game-card/home/popular-slots/fruit-party.webp" alt="" width="220" height="138" loading="lazy" decoding="async">
+                                <picture>
+<source type="image/webp" srcset="/images/game-card/home/popular-slots/fruit-party.webp" /><img class="game-tile__cover" src="/images/game-card/home/popular-slots/fruit-party.jpg" alt="Fruit Party — slot or table game thumbnail on 888bet Live." width="220" height="138" loading="lazy" decoding="async">
+</picture>
                                 <span class="category-badge">Bonus Buy</span>
                                 <svg class="game-tile__ph" aria-hidden="true"><use href="#icon-slot"/></svg>
                             </div>
@@ -236,7 +265,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </article>
                         <article class="game-tile" role="listitem" data-animate>
                             <div class="game-tile__thumb game-tile__thumb--fast">
-                                <img class="game-tile__cover" src="/images/webp/game-card/home/popular-slots/turbo-mines.webp" alt="" width="220" height="138" loading="lazy" decoding="async">
+                                <picture>
+<source type="image/webp" srcset="/images/game-card/home/popular-slots/turbo-mines.webp" /><img class="game-tile__cover" src="/images/game-card/home/popular-slots/turbo-mines.jpg" alt="Turbo Mines — slot or table game thumbnail on 888bet Live." width="220" height="138" loading="lazy" decoding="async">
+</picture>
                                 <span class="category-badge">Fast</span>
                                 <svg class="game-tile__ph" aria-hidden="true"><use href="#icon-bolt"/></svg>
                             </div>
@@ -258,10 +289,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p class="section__subtitle">Fresh rows rotate weekly—new releases and exclusives.</p>
                 </div>
                 <div class="scroll-row-wrap">
-                    <div class="scroll-row">
+                    <div class="scroll-row scroll-row--fill">
                         <article class="game-tile" data-animate>
                             <div class="game-tile__thumb game-tile__thumb--classic">
-                                <img class="game-tile__cover" src="/images/webp/game-card/home/new-releases-exclusives/neon-fruits-x.webp" alt="" width="220" height="138" loading="lazy" decoding="async">
+                                <picture>
+<source type="image/webp" srcset="/images/game-card/home/new-releases-exclusives/neon-fruits-x.webp" /><img class="game-tile__cover" src="/images/game-card/home/new-releases-exclusives/neon-fruits-x.jpg" alt="Neon Fruits X — slot or table game thumbnail on 888bet Live." width="220" height="138" loading="lazy" decoding="async">
+</picture>
                                 <div class="game-tile__badges"><span class="category-badge category-badge--new">New</span></div>
                                 <svg class="game-tile__ph" aria-hidden="true"><use href="#icon-slot"/></svg>
                             </div>
@@ -272,7 +305,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </article>
                         <article class="game-tile" data-animate>
                             <div class="game-tile__thumb game-tile__thumb--exclusive">
-                                <img class="game-tile__cover" src="/images/webp/game-card/home/new-releases-exclusives/888bet-live-fire.webp" alt="" width="220" height="138" loading="lazy" decoding="async">
+                                <picture>
+<source type="image/webp" srcset="/images/game-card/home/new-releases-exclusives/888bet-live-fire.webp" /><img class="game-tile__cover" src="/images/game-card/home/new-releases-exclusives/888bet-live-fire.jpg" alt="888bet Live Fire — slot or table game thumbnail on 888bet Live." width="220" height="138" loading="lazy" decoding="async">
+</picture>
                                 <div class="game-tile__badges"><span class="category-badge category-badge--excl">Exclusive</span></div>
                                 <svg class="game-tile__ph" aria-hidden="true"><use href="#icon-slot"/></svg>
                             </div>
@@ -283,7 +318,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </article>
                         <article class="game-tile" data-animate>
                             <div class="game-tile__thumb game-tile__thumb--gameshow">
-                                <img class="game-tile__cover" src="/images/webp/game-card/home/new-releases-exclusives/balloon-race-live.webp" alt="" width="220" height="138" loading="lazy" decoding="async">
+                                <picture>
+<source type="image/webp" srcset="/images/game-card/home/new-releases-exclusives/balloon-race-live.webp" /><img class="game-tile__cover" src="/images/game-card/home/new-releases-exclusives/balloon-race-live.jpg" alt="Balloon Race Live — slot or table game thumbnail on 888bet Live." width="220" height="138" loading="lazy" decoding="async">
+</picture>
                                 <span class="category-badge">Game show</span>
                                 <svg class="game-tile__ph" aria-hidden="true"><use href="#icon-live"/></svg>
                             </div>
@@ -306,42 +343,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="provider-grid" data-animate>
                     <div class="provider-card">
-                        <div class="provider-card__logo" aria-hidden="true"><img src="/images/webp/provider-logo/pragmatic-live.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></div>
+                        <div class="provider-card__logo" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/provider-logo/pragmatic-live.webp" /><img src="/images/provider-logo/pragmatic-live.png" alt="Pragmatic Live live casino software provider logo." width="120" height="48" loading="lazy" decoding="async">
+</picture></div>
                         <p class="provider-card__name">Pragmatic Play</p>
                         <p class="provider-card__meta">Slots · Live · Bingo</p>
                     </div>
                     <div class="provider-card">
-                        <div class="provider-card__logo" aria-hidden="true"><img src="/images/webp/provider-logo/evolution.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></div>
+                        <div class="provider-card__logo" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/provider-logo/evolution.webp" /><img src="/images/provider-logo/evolution.png" alt="Evolution live casino software provider logo." width="120" height="48" loading="lazy" decoding="async">
+</picture></div>
                         <p class="provider-card__name">Evolution</p>
                         <p class="provider-card__meta">Live casino · Game shows</p>
                     </div>
                     <div class="provider-card">
-                        <div class="provider-card__logo" aria-hidden="true"><img src="/images/webp/provider-logo/netent.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></div>
+                        <div class="provider-card__logo" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/provider-logo/netent.webp" /><img src="/images/provider-logo/netent.png" alt="Netent live casino software provider logo." width="120" height="48" loading="lazy" decoding="async">
+</picture></div>
                         <p class="provider-card__name">NetEnt</p>
                         <p class="provider-card__meta">Slots · Branded hits</p>
                     </div>
                     <div class="provider-card">
-                        <div class="provider-card__logo" aria-hidden="true"><img src="/images/webp/provider-logo/playngo.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></div>
+                        <div class="provider-card__logo" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/provider-logo/playngo.webp" /><img src="/images/provider-logo/playngo.png" alt="Playngo live casino software provider logo." width="120" height="48" loading="lazy" decoding="async">
+</picture></div>
                         <p class="provider-card__name">Play’n GO</p>
                         <p class="provider-card__meta">Grid slots · Classics</p>
                     </div>
                     <div class="provider-card">
-                        <div class="provider-card__logo" aria-hidden="true">MG</div>
-                        <p class="provider-card__name">Games Global</p>
-                        <p class="provider-card__meta">Jackpots · Tables</p>
+                        <div class="provider-card__logo" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/provider-logo/playtech-live.webp" /><img src="/images/provider-logo/playtech-live.png" alt="Playtech Live live casino software provider logo." width="120" height="48" loading="lazy" decoding="async">
+</picture></div>
+                        <p class="provider-card__name">Playtech</p>
+                        <p class="provider-card__meta">Jackpots · Branded suites</p>
                     </div>
                     <div class="provider-card">
-                        <div class="provider-card__logo" aria-hidden="true">RT</div>
-                        <p class="provider-card__name">Red Tiger</p>
-                        <p class="provider-card__meta">Daily jackpots</p>
+                        <div class="provider-card__logo" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/provider-logo/ezugi.webp" /><img src="/images/provider-logo/ezugi.png" alt="Ezugi live casino software provider logo." width="120" height="48" loading="lazy" decoding="async">
+</picture></div>
+                        <p class="provider-card__name">Ezugi</p>
+                        <p class="provider-card__meta">RNG tables · Live roots</p>
                     </div>
                     <div class="provider-card">
-                        <div class="provider-card__logo" aria-hidden="true"><img src="/images/webp/provider-logo/no-limit.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></div>
+                        <div class="provider-card__logo" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/provider-logo/no-limit.webp" /><img src="/images/provider-logo/no-limit.png" alt="No Limit live casino software provider logo." width="120" height="48" loading="lazy" decoding="async">
+</picture></div>
                         <p class="provider-card__name">Nolimit City</p>
                         <p class="provider-card__meta">High volatility</p>
                     </div>
                     <div class="provider-card">
-                        <div class="provider-card__logo" aria-hidden="true"><img src="/images/webp/provider-logo/bigtime-gaming.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></div>
+                        <div class="provider-card__logo" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/provider-logo/bigtime-gaming.webp" /><img src="/images/provider-logo/bigtime-gaming.png" alt="Bigtime Gaming live casino software provider logo." width="120" height="48" loading="lazy" decoding="async">
+</picture></div>
                         <p class="provider-card__name">Big Time Gaming</p>
                         <p class="provider-card__meta">Megaways inventor</p>
                     </div>
@@ -350,7 +403,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <span class="provider-pill">Hacksaw</span>
                     <span class="provider-pill">Push Gaming</span>
                     <span class="provider-pill">Relax</span>
-                    <span class="provider-pill">Ezugi</span>
+                    <span class="provider-pill">Playtech Live</span>
                 </div>
             </div>
         </section>
@@ -447,17 +500,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="cert-panel" data-animate>
                     <div class="cert-strip">
                         <div class="cert-badge">
-                            <div class="cert-badge__ph" aria-hidden="true"><img src="/images/webp/firms-logo/mga.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></div>
+                            <div class="cert-badge__ph" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/firms-logo/mga.webp" /><img src="/images/firms-logo/mga.png" alt="" width="48" height="48" loading="lazy" decoding="async">
+</picture></div>
                             <span class="cert-badge__label">Regulator</span>
                             <span class="cert-badge__note">License # on file</span>
                         </div>
                         <div class="cert-badge">
-                            <div class="cert-badge__ph" aria-hidden="true"><img src="/images/webp/firms-logo/rng.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></div>
+                            <div class="cert-badge__ph" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/firms-logo/rng.webp" /><img src="/images/firms-logo/rng.png" alt="" width="48" height="48" loading="lazy" decoding="async">
+</picture></div>
                             <span class="cert-badge__label">eCOGRA / GLI</span>
                             <span class="cert-badge__note">RTP &amp; RNG audits (quarterly)</span>
                         </div>
                         <div class="cert-badge">
-                            <div class="cert-badge__ph" aria-hidden="true"><img src="/images/webp/firms-logo/aml.webp" alt="" width="48" height="48" loading="lazy" decoding="async"></div>
+                            <div class="cert-badge__ph" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/firms-logo/aml.webp" /><img src="/images/firms-logo/aml.png" alt="" width="48" height="48" loading="lazy" decoding="async">
+</picture></div>
                             <span class="cert-badge__label">AML &amp; safer play</span>
                             <span class="cert-badge__note">Tools &amp; partner links</span>
                         </div>
@@ -483,17 +542,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <h3 class="step-card__title" style="margin-bottom:0.75rem;">Popular methods</h3>
                         <div class="payment-grid">
                             <div class="payment-card">
-                                <div class="payment-card__icon" aria-hidden="true"><img src="/images/webp/payment-logo/visa.webp" alt="" width="80" height="32" loading="lazy" decoding="async"></div>
+                                <div class="payment-card__icon" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/payment-logo/visa.webp" /><img src="/images/payment-logo/visa.png" alt="Visa — image on 888bet Live." width="80" height="32" loading="lazy" decoding="async">
+</picture></div>
                                 <div class="payment-card__name">Visa / Mastercard</div>
                                 <div class="payment-card__hint">Debit &amp; credit*</div>
                             </div>
                             <div class="payment-card">
-                                <div class="payment-card__icon" aria-hidden="true"><img src="/images/webp/payment-logo/ewallet.webp" alt="" width="80" height="32" loading="lazy" decoding="async"></div>
+                                <div class="payment-card__icon" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/payment-logo/ewallet.webp" /><img src="/images/payment-logo/ewallet.png" alt="Ewallet — image on 888bet Live." width="80" height="32" loading="lazy" decoding="async">
+</picture></div>
                                 <div class="payment-card__name">E-wallets</div>
                                 <div class="payment-card__hint">Skrill-style</div>
                             </div>
                             <div class="payment-card">
-                                <div class="payment-card__icon" aria-hidden="true"><img src="/images/webp/payment-logo/bank.webp" alt="" width="80" height="32" loading="lazy" decoding="async"></div>
+                                <div class="payment-card__icon" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/payment-logo/bank.webp" /><img src="/images/payment-logo/bank.png" alt="Bank — image on 888bet Live." width="80" height="32" loading="lazy" decoding="async">
+</picture></div>
                                 <div class="payment-card__name">Bank transfer</div>
                                 <div class="payment-card__hint">High limits</div>
                             </div>
@@ -746,7 +811,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><span class="infographic__dot"></span> Live lobby previews show seats and limits before you click.</li>
                             <li><span class="infographic__dot"></span> Promotions link straight to eligible 888bet slots and tables.</li>
                         </ul>
-                        <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--outline">Read our story</a>
+                        <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--outline" style="margin-top:1.25rem;">Read our story</a>
                     </div>
                 </div>
             </div>
@@ -761,7 +826,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="cards-grid">
                     <article class="game-card" data-animate>
                         <div class="game-card__image">
-                            <img class="game-card__cover" src="/images/webp/hero-banners/slot.webp" alt="" width="400" height="250" loading="lazy" decoding="async">
+                            <picture>
+<source type="image/webp" srcset="/images/hero-banners/slot.webp" /><img class="game-card__cover" src="/images/hero-banners/slot.jpg" alt="Slot — image on 888bet Live." width="400" height="250" loading="lazy" decoding="async">
+</picture>
                             <svg class="game-card__icon" width="64" height="64" aria-hidden="true"><use href="#icon-slot"/></svg>
                         </div>
                         <div class="game-card__body">
@@ -772,7 +839,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </article>
                     <article class="game-card" data-animate>
                         <div class="game-card__image">
-                            <img class="game-card__cover" src="/images/webp/hero-banners/live-casino.webp" alt="" width="400" height="250" loading="lazy" decoding="async">
+                            <picture>
+<source type="image/webp" srcset="/images/hero-banners/live-casino.webp" /><img class="game-card__cover" src="/images/hero-banners/live-casino.jpg" alt="Live Casino — image on 888bet Live." width="400" height="250" loading="lazy" decoding="async">
+</picture>
                             <svg class="game-card__icon" width="64" height="64" aria-hidden="true"><use href="#icon-live"/></svg>
                         </div>
                         <div class="game-card__body">
@@ -783,7 +852,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </article>
                     <article class="game-card" data-animate>
                         <div class="game-card__image">
-                            <img class="game-card__cover" src="/images/webp/hero-banners/table-games.webp" alt="" width="400" height="250" loading="lazy" decoding="async">
+                            <picture>
+<source type="image/webp" srcset="/images/hero-banners/table-games.webp" /><img class="game-card__cover" src="/images/hero-banners/table-games.jpg" alt="Table Games — image on 888bet Live." width="400" height="250" loading="lazy" decoding="async">
+</picture>
                             <svg class="game-card__icon" width="64" height="64" aria-hidden="true"><use href="#icon-table"/></svg>
                         </div>
                         <div class="game-card__body">
@@ -797,11 +868,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </section>
     
 
-        <section class="section section--dark" id="888bet-guide">
+        <section class="section section--dark section--guide-spotlight" id="888bet-guide">
             <div class="container prose prose--wide" data-animate>
-                <h2>888bet, 888 bet &amp; 888bet online: what players are really looking for</h2>
-                <p>When people type <strong>888bet</strong>, <strong>888 bet</strong>, or <strong>888bet online</strong> into a search engine, they are usually comparing more than a logo. They want to know whether a site offers a deep <strong>888bet slots</strong> library, a credible <strong>888bet live</strong> lobby with real dealers, and RNG <a href="table-games.html">table games</a> for quieter sessions. They also want bonuses explained in plain language, not buried in fine print. 888bet Live is structured around those expectations: a single wallet across products, readable routes to <a href="promotions.html">888bet promotions</a>, and help content that answers account and payment questions without sending you in circles.</p>
-                <p>This guide walks through how the brand fits together for visitors who arrived from search, referrals, or social posts. Headings are written so you can scan for the topic you need. Nothing here replaces your local rules; always confirm eligibility, age limits, and licensing in your jurisdiction before playing for real money.</p>
+                <header class="guide-intro" aria-labelledby="guide-intro-title">
+                    <div class="guide-intro__accent" aria-hidden="true"></div>
+                    <p class="guide-intro__eyebrow">Player intent</p>
+                    <div class="guide-intro__jump">
+                        <a class="guide-intro__pill" href="slots.html">888bet slots</a>
+                        <a class="guide-intro__pill" href="live-casino.html">Live casino</a>
+                        <a class="guide-intro__pill" href="table-games.html">Table games</a>
+                        <a class="guide-intro__pill" href="promotions.html">Promotions</a>
+                    </div>
+                    <h2 id="guide-intro-title" class="guide-intro__title">888bet, 888 bet &amp; 888bet online: what players are really looking for</h2>
+                    <div class="guide-intro__lead">
+                        <p>When people type <strong>888bet</strong>, <strong>888 bet</strong>, or <strong>888bet online</strong> into a search engine, they are usually comparing more than a logo. They want to know whether a site offers a deep <strong>888bet slots</strong> library, a credible <strong>888bet live</strong> lobby with real dealers, and RNG <a href="table-games.html">table games</a> for quieter sessions. They also want bonuses explained in plain language, not buried in fine print. 888bet Live is structured around those expectations: a single wallet across products, readable routes to <a href="promotions.html">888bet promotions</a>, and help content that answers account and payment questions without sending you in circles.</p>
+                        <p>This guide walks through how the brand fits together for visitors who arrived from search, referrals, or social posts. Headings are written so you can scan for the topic you need. Nothing here replaces your local rules; always confirm eligibility, age limits, and licensing in your jurisdiction before playing for real money.</p>
+                    </div>
+                </header>
 
                 <h2>888bet slots: Megaways, jackpots, and how we organize the lobby</h2>
                 <p><strong>888bet slots</strong> traffic is driven by variety: Megaways, Hold &amp; Win, classic fruit machines, bonus-buy titles where permitted, and progressive jackpots with network pots. The best slot lobbies reduce decision fatigue. That means filters for volatility, feature categories, and new releases, plus tiles that show published RTP where available. Reviewers who compare <strong>888bet games</strong> often cite library breadth and load times; we optimize static pages and progressive tile loading so you spend less time waiting and more time spinning.</p>

@@ -2,7 +2,11 @@
 <header class="header">
     <div class="header__inner">
         <a href="index.html" class="logo" aria-label="888bet Live home">
-            <img class="logo__img" src="/images/webp/logo.webp" width="200" height="48" alt="888bet Live" decoding="async">
+            <!-- SEO / perf: WebP logo with PNG fallback (see tools/html-enrich-images.cjs after build). -->
+            <picture>
+                <source type="image/webp" srcset="/images/logo.webp" />
+                <img class="logo__img" src="/images/logo.png" width="200" height="56" alt="888bet Live" decoding="async">
+            </picture>
         </a>
         <nav class="nav" aria-label="Main navigation">
             <ul class="nav__list">
@@ -13,6 +17,7 @@
                 <li><a href="promotions.html" class="nav__link" data-nav="promotions">Promotions</a></li>
                 <li><a href="about-us.html" class="nav__link" data-nav="about-us">About Us</a></li>
                 <li><a href="help-center.html" class="nav__link" data-nav="help-center">Help Center</a></li>
+                <li><a href="blog/index.html" class="nav__link" data-nav="blog">Blog</a></li>
                 <li><a href="terms.html" class="nav__link" data-nav="terms">Terms</a></li>
             </ul>
         </nav>
@@ -23,13 +28,77 @@
 </header>
 <nav class="mobile-menu" id="site-mobile-nav" aria-label="Mobile menu">
     <ul class="mobile-menu__list">
-        <li><a href="index.html" class="mobile-menu__link" data-nav="index">Home</a></li>
-        <li><a href="slots.html" class="mobile-menu__link" data-nav="slots">Slots</a></li>
-        <li><a href="live-casino.html" class="mobile-menu__link" data-nav="live-casino">Live Casino</a></li>
-        <li><a href="table-games.html" class="mobile-menu__link" data-nav="table-games">Table Games</a></li>
-        <li><a href="promotions.html" class="mobile-menu__link" data-nav="promotions">Promotions</a></li>
-        <li><a href="about-us.html" class="mobile-menu__link" data-nav="about-us">About Us</a></li>
-        <li><a href="help-center.html" class="mobile-menu__link" data-nav="help-center">Help Center</a></li>
-        <li><a href="terms.html" class="mobile-menu__link" data-nav="terms">Terms</a></li>
+        <li class="mobile-menu__item">
+            <a href="index.html" class="mobile-menu__link" data-nav="index">
+                <span class="mobile-menu__icon-wrap" aria-hidden="true">
+                    <svg class="icon mobile-menu__icon" width="22" height="22"><use href="#icon-home"/></svg>
+                </span>
+                <span class="mobile-menu__label">Home</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item">
+            <a href="slots.html" class="mobile-menu__link" data-nav="slots">
+                <span class="mobile-menu__icon-wrap" aria-hidden="true">
+                    <svg class="icon mobile-menu__icon" width="22" height="22"><use href="#icon-slot"/></svg>
+                </span>
+                <span class="mobile-menu__label">Slots</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item">
+            <a href="live-casino.html" class="mobile-menu__link" data-nav="live-casino">
+                <span class="mobile-menu__icon-wrap" aria-hidden="true">
+                    <svg class="icon mobile-menu__icon" width="22" height="22"><use href="#icon-live"/></svg>
+                </span>
+                <span class="mobile-menu__label">Live Casino</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item">
+            <a href="table-games.html" class="mobile-menu__link" data-nav="table-games">
+                <span class="mobile-menu__icon-wrap" aria-hidden="true">
+                    <svg class="icon mobile-menu__icon" width="22" height="22"><use href="#icon-table"/></svg>
+                </span>
+                <span class="mobile-menu__label">Table Games</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item">
+            <a href="promotions.html" class="mobile-menu__link" data-nav="promotions">
+                <span class="mobile-menu__icon-wrap" aria-hidden="true">
+                    <svg class="icon mobile-menu__icon" width="22" height="22"><use href="#icon-gift"/></svg>
+                </span>
+                <span class="mobile-menu__label">Promotions</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item">
+            <a href="about-us.html" class="mobile-menu__link" data-nav="about-us">
+                <span class="mobile-menu__icon-wrap" aria-hidden="true">
+                    <svg class="icon mobile-menu__icon" width="22" height="22"><use href="#icon-shield"/></svg>
+                </span>
+                <span class="mobile-menu__label">About Us</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item">
+            <a href="help-center.html" class="mobile-menu__link" data-nav="help-center">
+                <span class="mobile-menu__icon-wrap" aria-hidden="true">
+                    <svg class="icon mobile-menu__icon" width="22" height="22"><use href="#icon-help"/></svg>
+                </span>
+                <span class="mobile-menu__label">Help Center</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item">
+            <a href="blog/index.html" class="mobile-menu__link" data-nav="blog">
+                <span class="mobile-menu__icon-wrap" aria-hidden="true">
+                    <svg class="icon mobile-menu__icon" width="22" height="22"><use href="#icon-chat"/></svg>
+                </span>
+                <span class="mobile-menu__label">Blog</span>
+            </a>
+        </li>
+        <li class="mobile-menu__item">
+            <a href="terms.html" class="mobile-menu__link" data-nav="terms">
+                <span class="mobile-menu__icon-wrap" aria-hidden="true">
+                    <svg class="icon mobile-menu__icon" width="22" height="22"><use href="#icon-doc"/></svg>
+                </span>
+                <span class="mobile-menu__label">Terms</span>
+            </a>
+        </li>
     </ul>
 </nav>

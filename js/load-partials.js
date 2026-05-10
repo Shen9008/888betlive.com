@@ -1,25 +1,42 @@
 /**
- * 888bet Live – load header, footer, CTA banner; SVG sprite; active nav.
+ * 888bet Live – load header, footer; CTA banner on non-blog-article routes; SVG sprite; active nav.
  */
 (function () {
     'use strict';
 
-    var pathname = window.location.pathname || '';
-    var isSub = pathname.indexOf('/news/') !== -1;
-    var base = isSub ? '../' : '';
+    var pathname = (window.location.pathname || '').replace(/\\/g, '/');
+    var pathNorm = pathname.replace(/\/+$/, '') || '/';
+    var segments = pathNorm.replace(/^\//, '').split('/').filter(Boolean);
+    var isBlogListing =
+        pathNorm === '/blog' ||
+        pathNorm.endsWith('/blog') ||
+        pathNorm === '/blog/index.html' ||
+        pathNorm.endsWith('/blog/index.html');
+    var isBlogArticlePage =
+        segments[0] && segments[0].toLowerCase() === 'blog' &&
+        segments.length >= 2 &&
+        !isBlogListing;
 
-    var rootPages = [
-        'index.html', 'slots.html', 'live-casino.html', 'table-games.html',
-        'promotions.html', 'about-us.html', 'help-center.html', 'terms.html'
-    ];
+    /**
+     * Partials live at `/partials/` (site root). From `/blog/` use `../`; from
+     * `/blog/post-slug/` use `../../`. News uses `../` when under `/news/`.
+     */
+    function partialFetchBase() {
+        if (pathname.indexOf('/news/') !== -1) return '../';
+        if (!segments.length || segments[0].toLowerCase() !== 'blog') return '';
+        return isBlogArticlePage ? '../../' : '../';
+    }
+
+    var base = partialFetchBase();
 
     function rewriteLinks(html) {
-        if (!isSub) return html;
-        html = html.replace(/\shref="(?!https?:\/\/|#|mailto:|\.\.\/)([^"]+)"/g, function (_, href) {
-            if (rootPages.indexOf(href) !== -1) return ' href="../' + href + '"';
-            return ' href="' + href + '"';
-        });
-        return html;
+        if (!base) return html;
+        return html.replace(
+            /\shref="(?!https?:\/\/|mailto:|javascript:|#|\/\/|\/|\.\.\/)([^"]+)"/gi,
+            function (_, href) {
+                return ' href="' + base + href + '"';
+            }
+        );
     }
 
     function setActiveNav() {
@@ -35,6 +52,8 @@
         var symbols =
             '<symbol id="icon-menu" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></symbol>' +
             '<symbol id="icon-close" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>' +
+            '<symbol id="icon-home" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></symbol>' +
+            '<symbol id="icon-doc" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></symbol>' +
             '<symbol id="icon-slot" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-9 13H9v-2h2v2zm0-4H9v-2h2v2zm0-4H9V7h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></symbol>' +
             '<symbol id="icon-live" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></symbol>' +
             '<symbol id="icon-table" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4V6zm0 5h7v7H4v-7zm9 0h7v7h-7v-7z"/></symbol>' +
@@ -45,7 +64,8 @@
             '<symbol id="icon-chart" viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.07-4-4L2 16.99z"/></symbol>' +
             '<symbol id="icon-chat" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/></symbol>' +
             '<symbol id="icon-mail" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>' +
-            '<symbol id="icon-phone" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>';
+            '<symbol id="icon-phone" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>' +
+            '<symbol id="icon-chevron-up" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></symbol>';
 
         var wrap = document.createElement('div');
         wrap.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" id="svg-sprite"><defs>' + symbols + '</defs></svg>';
@@ -77,7 +97,7 @@
                 footerMount.outerHTML = footerHtml;
             }
             var main = document.getElementById('main-content');
-            if (main && bannerHtml.trim()) {
+            if (main && bannerHtml.trim() && !isBlogArticlePage) {
                 var firstSection = main.querySelector('section');
                 if (firstSection) {
                     firstSection.insertAdjacentHTML('afterend', bannerHtml);

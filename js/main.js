@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var sel =
 
-            'a, button, .btn, [role="button"], input, textarea, select, label, .nav__link, .game-tile, .category-card';
+            'a, button, .btn, [role="button"], input, textarea, select, label, .nav__link, .mobile-menu__link, .game-tile, .category-card';
 
         window.addEventListener(
 
@@ -138,23 +138,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var menu = document.querySelector('.mobile-menu');
 
-        var toggle = document.querySelector('.mobile-menu-toggle');
-
-        if (!menu || !toggle) return;
+        if (!menu) return;
 
         menu.classList.toggle('active', isOpen);
 
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.querySelectorAll('.mobile-menu-toggle').forEach(function (toggle) {
 
-        toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 
-        var use = toggle.querySelector('use');
+            toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
 
-        if (use) {
+            var use = toggle.querySelector('use');
 
-            use.setAttribute('href', isOpen ? '#icon-close' : '#icon-menu');
+            if (use) {
 
-        }
+                use.setAttribute('href', isOpen ? '#icon-close' : '#icon-menu');
+
+            }
+
+        });
 
         document.body.classList.toggle('menu-open', isOpen);
 
@@ -234,9 +236,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setMenuOpen(false);
 
-            var t = document.querySelector('.mobile-menu-toggle');
+            var t = document.querySelector('.header .mobile-menu-toggle');
 
-            if (t) t.focus();
+            if (t) {
+
+                t.focus();
+
+            }
 
         }
 
@@ -336,6 +342,95 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('888betlive:partials', initHeaderScroll);
 
+
+
+    (function initScrollToTop() {
+
+        var btn = document.createElement('button');
+
+        btn.type = 'button';
+
+        btn.className = 'scroll-top';
+
+        btn.id = 'scroll-top-btn';
+
+        btn.setAttribute('aria-label', 'Back to top');
+
+        btn.tabIndex = -1;
+
+        btn.setAttribute('aria-hidden', 'true');
+
+        btn.innerHTML =
+
+            '<svg class="icon scroll-top__icon" width="24" height="24" aria-hidden="true"><use href="#icon-chevron-up"/></svg>';
+
+        document.body.appendChild(btn);
+
+
+
+        var throttle;
+
+        var threshold = Math.min(360, window.innerHeight * 0.45);
+
+
+
+        function onScroll() {
+
+            if (throttle) return;
+
+            throttle = window.requestAnimationFrame(function () {
+
+                throttle = 0;
+
+                var y = window.scrollY || window.pageYOffset || 0;
+
+                var show = y > threshold;
+
+                btn.classList.toggle('scroll-top--visible', show);
+
+                if (show) {
+
+                    btn.removeAttribute('aria-hidden');
+
+                    btn.tabIndex = 0;
+
+                } else {
+
+                    btn.setAttribute('aria-hidden', 'true');
+
+                    btn.tabIndex = -1;
+
+                }
+
+            });
+
+        }
+
+
+
+        btn.addEventListener('click', function () {
+
+            var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+
+        });
+
+
+
+        window.addEventListener('resize', function () {
+
+            threshold = Math.min(360, window.innerHeight * 0.45);
+
+            onScroll();
+
+        }, { passive: true });
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        onScroll();
+
+    })();
 
 
     var observer = new IntersectionObserver(function (entries) {

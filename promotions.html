@@ -16,8 +16,11 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="theme-color" content="#000000">
-    <link rel="icon" href="/images/webp/favicon.webp" type="image/webp">
+    <link rel="icon" href="/images/favicon.jpg" type="image/jpeg">
     <link rel="canonical" href="https://888betlive.com/promotions.html">
+    <!-- SEO / perf: LCP hero preload (WebP; JPEG fallback in CSS image-set) -->
+    <link rel="preload" as="image" href="/images/hero-banners/promotions.webp" type="image/webp">
+
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="888bet Live">
     <meta property="og:locale" content="en_US">
@@ -30,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.min.css">
     <script defer src="js/load-partials.js"></script>
     <script defer src="js/main.js"></script>
     <script defer src="js/widgets.js"></script>
@@ -75,13 +78,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section class="section section--tight">
             <div class="container">
                 <div class="promo-live-banner" data-animate>
-                    <div class="promo-live-banner__visual promo-live-banner__visual--featured" aria-hidden="true"><img src="/images/webp/promos/featured-promo.webp" alt="" width="280" height="200" loading="lazy" decoding="async"></div>
-                    <div>
+                    <div class="promo-live-banner__visual promo-live-banner__visual--featured" aria-hidden="true">
+                        <picture>
+<source type="image/webp" srcset="/images/promos/featured-promo.webp" /><img src="/images/promos/featured-promo.jpg" alt="Featured 888bet Live casino promotion artwork." width="280" height="200" loading="lazy" decoding="async">
+</picture>
+                    </div>
+                    <div class="promo-live-banner__content">
                         <p class="promo-live-banner__eyebrow">Ongoing · Featured</p>
-                        <h2>Spring Spin Festival</h2>
-                        <p>Daily missions on selected Megaways &amp; Hold &amp; Win titles—leaderboard points convert to bonus cash. 18+ T&amp;Cs apply; geo restrictions may apply.</p>
-                        <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--accent);">Ends in <span data-countdown-hours="168">—</span></p>
-                        <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--lg" style="margin-top:0.75rem;">Eligible games</a>
+                        <h2 class="promo-live-banner__title">Spring Spin Festival</h2>
+                        <p class="promo-live-banner__lede">Daily missions on selected Megaways &amp; Hold &amp; Win titles—leaderboard points convert to bonus cash. 18+ T&amp;Cs apply; geo restrictions may apply.</p>
+                        <div class="promo-live-banner__actions">
+                            <p class="promo-live-banner__countdown">Ends in <span data-countdown-hours="168">—</span></p>
+                            <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--lg promo-live-banner__cta">Eligible games</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,30 +104,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="ongoing-strip">
                     <article class="ongoing-card ongoing-card--hot" data-animate>
-                        <div class="ongoing-card__visual ongoing-card__visual--promo" aria-hidden="true"><img src="/images/webp/promos/all-ongoing-promotions/free-spin.webp" alt="" width="200" height="144" loading="lazy" decoding="async"></div>
-                        <div>
-                            <p class="ongoing-card__tag">Slots</p>
+                        <div class="ongoing-card__media ongoing-card__media--promo">
+                            <picture>
+<source type="image/webp" srcset="/images/promos/all-ongoing-promotions/free-spin.webp" /><img src="/images/promos/all-ongoing-promotions/free-spin.jpg" alt="Midweek free spins promotional banner at 888bet Live." width="560" height="280" loading="lazy" decoding="async">
+</picture>
+                            <span class="ongoing-card__pill">Slots</span>
+                        </div>
+                        <div class="ongoing-card__body">
                             <h3>Midweek free spins</h3>
-                            <p>Wager €50 on Pragmatic titles → 50 spins next day.</p>
-                            <p class="ongoing-card__time" data-countdown-hours="36">—</p>
+                            <p class="ongoing-card__desc">Wager €50 on Pragmatic titles → 50 spins next day.</p>
+                            <div class="ongoing-card__meta">
+                                <p class="ongoing-card__time" data-countdown-hours="36">—</p>
+                                <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--sm">Offer details</a>
+                            </div>
                         </div>
                     </article>
                     <article class="ongoing-card" data-animate>
-                        <div class="ongoing-card__visual" aria-hidden="true"><img src="/images/webp/promos/all-ongoing-promotions/slot-races.webp" alt="" width="200" height="144" loading="lazy" decoding="async"></div>
-                        <div>
-                            <p class="ongoing-card__tag">Live</p>
+                        <div class="ongoing-card__media">
+                            <picture>
+<source type="image/webp" srcset="/images/promos/all-ongoing-promotions/slot-races.webp" /><img src="/images/promos/all-ongoing-promotions/slot-races.jpg" alt="Roulette races leaderboard promotion at 888bet Live." width="560" height="280" loading="lazy" decoding="async">
+</picture>
+                            <span class="ongoing-card__pill">Live</span>
+                        </div>
+                        <div class="ongoing-card__body">
                             <h3>Roulette races</h3>
-                            <p>Highest net win in window wins leaderboard prizes.</p>
-                            <p class="ongoing-card__time" data-countdown-hours="12">—</p>
+                            <p class="ongoing-card__desc">Highest net win in window wins leaderboard prizes.</p>
+                            <div class="ongoing-card__meta">
+                                <p class="ongoing-card__time" data-countdown-hours="12">—</p>
+                                <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--sm">How to enter</a>
+                            </div>
                         </div>
                     </article>
                     <article class="ongoing-card" data-animate>
-                        <div class="ongoing-card__visual" aria-hidden="true"><img src="/images/webp/promos/all-ongoing-promotions/vip-boost.webp" alt="" width="200" height="144" loading="lazy" decoding="async"></div>
-                        <div>
-                            <p class="ongoing-card__tag">VIP</p>
+                        <div class="ongoing-card__media">
+                            <picture>
+<source type="image/webp" srcset="/images/promos/all-ongoing-promotions/vip-boost.webp" /><img src="/images/promos/all-ongoing-promotions/vip-boost.jpg" alt="VIP tier boost weekend loyalty promotion at 888bet Live." width="560" height="280" loading="lazy" decoding="async">
+</picture>
+                            <span class="ongoing-card__pill">VIP</span>
+                        </div>
+                        <div class="ongoing-card__body">
                             <h3>Tier boost weekend</h3>
-                            <p>Double loyalty points on table RNG + live.</p>
-                            <p class="ongoing-card__time" data-countdown-hours="96">—</p>
+                            <p class="ongoing-card__desc">Double loyalty points on table RNG + live.</p>
+                            <div class="ongoing-card__meta">
+                                <p class="ongoing-card__time" data-countdown-hours="96">—</p>
+                                <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener sponsored" class="btn btn--gold btn--sm">Learn more</a>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -134,21 +164,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div class="cards-grid">
                     <article class="promo-art-card" data-animate>
-                        <div class="promo-art-card__visual" aria-hidden="true"><img src="/images/webp/promos/hot-promotion-banners/weekend-reload.webp" alt="" width="400" height="225" loading="lazy" decoding="async"></div>
+                        <div class="promo-art-card__visual" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/promos/hot-promotion-banners/weekend-reload.webp" /><img src="/images/promos/hot-promotion-banners/weekend-reload.jpg" alt="Weekend reload bonus promotion banner." width="400" height="225" loading="lazy" decoding="async">
+</picture></div>
                         <div class="promo-art-card__body">
                             <h3>Weekend reload</h3>
                             <p>Match + spins on Megaways—see live offer for current terms.</p>
                         </div>
                     </article>
                     <article class="promo-art-card" data-animate>
-                        <div class="promo-art-card__visual" aria-hidden="true"><img src="/images/webp/promos/hot-promotion-banners/live-golden-hour.webp" alt="" width="400" height="225" loading="lazy" decoding="async"></div>
+                        <div class="promo-art-card__visual" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/promos/hot-promotion-banners/live-golden-hour.webp" /><img src="/images/promos/hot-promotion-banners/live-golden-hour.jpg" alt="Live casino golden hour promotion banner." width="400" height="225" loading="lazy" decoding="async">
+</picture></div>
                         <div class="promo-art-card__body">
                             <h3>Live golden hour</h3>
                             <p>Cashback window—chip bundles on eligible tables.</p>
                         </div>
                     </article>
                     <article class="promo-art-card" data-animate>
-                        <div class="promo-art-card__visual" aria-hidden="true"><img src="/images/webp/promos/hot-promotion-banners/vip-gifts.webp" alt="" width="400" height="225" loading="lazy" decoding="async"></div>
+                        <div class="promo-art-card__visual" aria-hidden="true"><picture>
+<source type="image/webp" srcset="/images/promos/hot-promotion-banners/vip-gifts.webp" /><img src="/images/promos/hot-promotion-banners/vip-gifts.jpg" alt="VIP gifts and rewards promotion banner." width="400" height="225" loading="lazy" decoding="async">
+</picture></div>
                         <div class="promo-art-card__body">
                             <h3>VIP prize draw</h3>
                             <p>Leaderboard + ticket entries—see offer for prize details.</p>
