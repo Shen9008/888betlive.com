@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# SEO tooling / source paths — block if mistakenly published on the apex host (see seo-task.md Step 7).
+Disallow: /scripts/
+Disallow: /tools/
+Disallow: /node_modules/
+
 Sitemap: https://888betlive.com/sitemap.xml

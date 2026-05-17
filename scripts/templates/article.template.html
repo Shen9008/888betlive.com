@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TS95HFR5');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
+  <title>{{META_TITLE}}</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <meta name="keywords" content="{{KEYWORDS}}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="icon" href="/images/favicon.jpg" type="image/jpeg">
+  <link rel="canonical" href="{{SHARE_URL}}">
+  <link rel="alternate" hreflang="en" href="{{SHARE_URL}}">
+  <link rel="alternate" hreflang="x-default" href="{{SHARE_URL}}">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{SITE_ORIGIN}}/sitemap.xml">
+
+  <meta property="og:title" content="{{META_TITLE}}">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{SHARE_URL}}">
+  <meta property="og:image" content="{{POST_IMAGE_URL}}">
+  <meta property="og:site_name" content="{{SITE_NAME}}">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="{{PUBLISHED_DATE_ISO}}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{META_TITLE}}">
+  <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+  <meta name="twitter:image" content="{{POST_IMAGE_URL}}">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap">
+  <link rel="stylesheet" href="../../css/style.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{TITLE}}",
+    "description": "{{META_DESCRIPTION}}",
+    "datePublished": "{{PUBLISHED_DATE_ISO}}",
+    "dateModified": "{{UPDATED_DATE_ISO}}",
+    "image": {{POST_IMAGE_JSON}},
+    "author": {
+      "@type": "Person",
+      "name": "888bet Live Editorial Desk",
+      "url": "{{SITE_ORIGIN}}/about-us.html",
+      "jobTitle": "Editorial content",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "{{SITE_NAME}}",
+        "url": "{{SITE_ORIGIN}}/"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{SITE_NAME}}",
+      "url": "{{SITE_ORIGIN}}/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{SITE_ORIGIN}}/images/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{SHARE_URL}}"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{SITE_ORIGIN}}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "{{SITE_ORIGIN}}/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{TITLE}}",
+        "item": "{{SHARE_URL}}"
+      }
+    ]
+  }
+  </script>
+
+  <!-- SEO: Inject optional FAQPage JSON-LD via content pipeline ({{FAQ_SCHEMA_SCRIPT}} placeholder). -->
+  {{FAQ_SCHEMA_SCRIPT}}
+
+</head>
+
+<body data-page="blog" data-blog-slug="{{SLUG}}" data-related-slugs="{{RELATED_POST_SLUGS}}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TS95HFR5" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div id="partial-header"></div>
+
+  <main id="main-content" class="blog-article-page">
+    <section class="blog-hero" aria-labelledby="blog-article-title">
+      <div class="blog-hero__glow" aria-hidden="true"></div>
+      <div class="container blog-hero__container">
+        <nav class="blog-breadcrumb blog-hero__breadcrumb" aria-label="Breadcrumb">
+          <ol class="blog-breadcrumb__list">
+            <li><a href="/">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a href="/blog/">Blog</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="blog-breadcrumb__current">{{TITLE_ATTR}}</li>
+          </ol>
+        </nav>
+
+        <div class="blog-hero__meta-row">
+          <span class="blog-hero__badge">{{CATEGORY}}</span>
+          <span class="blog-hero__dot" aria-hidden="true"></span>
+          <span class="blog-hero__read">{{READING_TIME}}</span>
+        </div>
+
+        <h1 id="blog-article-title" class="blog-hero__title">{{TITLE}}</h1>
+        <p class="blog-hero__deck">{{EXCERPT}}</p>
+
+        <div class="blog-hero__toolbar">
+          <time class="blog-hero__date" datetime="{{PUBLISHED_DATE_ISO}}">{{PUBLISHED_DATE_FORMATTED}}</time>
+        </div>
+      </div>
+    </section>
+
+    <div class="blog-body section">
+      <div class="container blog-article-layout">
+        <article class="blog-article-main">
+          <div class="article-prose blog-article-prose prose">
+            {{TOC_HTML}}
+
+            {{ARTICLE_BODY}}
+          </div>
+
+          <aside class="blog-end-cta" aria-label="Play responsibly">
+            <div class="blog-end-cta__border" aria-hidden="true"></div>
+            <div class="blog-end-cta__inner">
+              <h2 class="blog-end-cta__title">Play at {{SITE_NAME}}</h2>
+              <p class="blog-end-cta__text">Open <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" target="_blank" rel="noopener noreferrer sponsored"><strong>{{SITE_NAME}}</strong></a> for slots, live tables, and promos—always within limits you set.</p>
+              <div class="blog-end-cta__actions">
+                <a href="https://reffpa.com/L?tag=d_5505016m_1236c_&amp;site=5505016&amp;ad=1236" class="btn btn--gold" target="_blank" rel="noopener noreferrer sponsored">Claim bonus</a>
+                <a href="/help-center.html" class="btn btn--outline">Responsible gambling</a>
+              </div>
+            </div>
+          </aside>
+
+          <section class="blog-related-panel" id="related-posts" aria-label="Related posts">
+            <div class="blog-related-panel__head">
+              <h2 class="blog-related-panel__title">Related posts</h2>
+              <p class="blog-related-panel__sub">More from the blog</p>
+            </div>
+            <p class="blog-related-placeholder">Loading related posts…</p>
+            <ul class="blog-related-list" hidden></ul>
+          </section>
+        </article>
+
+        <aside class="blog-aside" aria-label="More from the blog">
+          <div class="blog-aside-card blog-aside-card--posts">
+            <div class="blog-aside-card__accent" aria-hidden="true"></div>
+            <h3 class="blog-aside-card__title">Recent posts</h3>
+            <ul class="blog-sidebar-list" id="sidebar-posts">
+              <li class="blog-sidebar-placeholder">Loading…</li>
+            </ul>
+          </div>
+          <div class="blog-aside-card blog-aside-card--cta">
+            <h3 class="blog-aside-card__title">Explore</h3>
+            <p class="blog-aside-card__text">Slots, live casino, and table games on 888betlive.com.</p>
+            <a href="../../promotions.html" class="btn btn--gold blog-aside-card__btn">View promotions</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div id="partial-footer"></div>
+
+  <script defer src="../../js/load-partials.js"></script>
+  <script defer src="../../js/main.js"></script>
+  <script defer src="../../js/blog-article.js"></script>
+</body>
+
+</html>
