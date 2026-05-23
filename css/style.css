@@ -225,6 +225,44 @@ h3 {
     object-position: top center;
 }
 
+.logo picture {
+    display: contents;
+}
+
+/* picture wrappers from html-enrich-images must fill media containers */
+.ongoing-card__media picture,
+.game-tile__thumb picture,
+.game-card__image picture,
+.promo-feature__media picture,
+.hot-promo-card__media picture {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ongoing-card__media picture img,
+.game-tile__thumb picture img,
+.game-card__image picture img,
+.promo-feature__media picture img,
+.hot-promo-card__media picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.provider-card__logo picture,
+.cert-badge__ph picture,
+.category-card__icon picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
 .logo__mark {
     font-size: 1.35rem;
     background: var(--gradient-gold);
@@ -632,67 +670,104 @@ main {
 }
 
 body[data-page="index"] .hero {
-    /* SEO: WebP preferred for LCP paint; JPEG fallback (see <link rel="preload"> in HTML). */
-    --hero-photo: image-set(
-        url("/images/hero-banners/home.webp") type("image/webp"),
-        url("/images/hero-banners/home.jpg") type("image/jpeg")
-    );
+    --hero-photo: url("/images/hero-banners/home.jpg");
 }
 
 body[data-page="slots"] .hero {
-    --hero-photo: image-set(
-        url("/images/hero-banners/slot.webp") type("image/webp"),
-        url("/images/hero-banners/slot.jpg") type("image/jpeg")
-    );
+    --hero-photo: url("/images/hero-banners/slot.jpg");
 }
 
 body[data-page="live-casino"] .hero {
-    --hero-photo: image-set(
-        url("/images/hero-banners/live-casino.webp") type("image/webp"),
-        url("/images/hero-banners/live-casino.jpg") type("image/jpeg")
-    );
+    --hero-photo: url("/images/hero-banners/live-casino.jpg");
 }
 
 body[data-page="table-games"] .hero {
-    --hero-photo: image-set(
-        url("/images/hero-banners/table-games.webp") type("image/webp"),
-        url("/images/hero-banners/table-games.jpg") type("image/jpeg")
-    );
+    --hero-photo: url("/images/hero-banners/table-games.jpg");
 }
 
 body[data-page="promotions"] .hero {
-    --hero-photo: image-set(
-        url("/images/hero-banners/promotions.webp") type("image/webp"),
-        url("/images/hero-banners/promotions.jpg") type("image/jpeg")
-    );
+    --hero-photo: url("/images/hero-banners/promotions.jpg");
 }
 
 body[data-page="about-us"] .hero {
-    --hero-photo: image-set(
-        url("/images/hero-banners/about-us.webp") type("image/webp"),
-        url("/images/hero-banners/about-us.jpg") type("image/jpeg")
-    );
+    --hero-photo: url("/images/hero-banners/about-us.jpg");
 }
 
 body[data-page="help-center"] .hero {
-    --hero-photo: image-set(
-        url("/images/hero-banners/help-center.webp") type("image/webp"),
-        url("/images/hero-banners/help-center.jpg") type("image/jpeg")
-    );
+    --hero-photo: url("/images/hero-banners/help-center.jpg");
 }
 
 body[data-page="terms"] .hero {
-    --hero-photo: image-set(
-        url("/images/hero-banners/terms.webp") type("image/webp"),
-        url("/images/hero-banners/terms.jpg") type("image/jpeg")
-    );
+    --hero-photo: url("/images/hero-banners/terms.jpg");
 }
 
 body[data-page="blog"] .hero {
-    --hero-photo: image-set(
-        url("/images/hero-banners/blog.webp") type("image/webp"),
-        url("/images/hero-banners/blog.jpg") type("image/jpeg")
-    );
+    --hero-photo: url("/images/hero-banners/blog.jpg");
+}
+
+@supports (background-image: image-set(url("/images/hero-banners/home.webp") type("image/webp"))) {
+    body[data-page="index"] .hero {
+        --hero-photo: image-set(
+            url("/images/hero-banners/home.webp") type("image/webp"),
+            url("/images/hero-banners/home.jpg") type("image/jpeg")
+        );
+    }
+
+    body[data-page="slots"] .hero {
+        --hero-photo: image-set(
+            url("/images/hero-banners/slot.webp") type("image/webp"),
+            url("/images/hero-banners/slot.jpg") type("image/jpeg")
+        );
+    }
+
+    body[data-page="live-casino"] .hero {
+        --hero-photo: image-set(
+            url("/images/hero-banners/live-casino.webp") type("image/webp"),
+            url("/images/hero-banners/live-casino.jpg") type("image/jpeg")
+        );
+    }
+
+    body[data-page="table-games"] .hero {
+        --hero-photo: image-set(
+            url("/images/hero-banners/table-games.webp") type("image/webp"),
+            url("/images/hero-banners/table-games.jpg") type("image/jpeg")
+        );
+    }
+
+    body[data-page="promotions"] .hero {
+        --hero-photo: image-set(
+            url("/images/hero-banners/promotions.webp") type("image/webp"),
+            url("/images/hero-banners/promotions.jpg") type("image/jpeg")
+        );
+    }
+
+    body[data-page="about-us"] .hero {
+        --hero-photo: image-set(
+            url("/images/hero-banners/about-us.webp") type("image/webp"),
+            url("/images/hero-banners/about-us.jpg") type("image/jpeg")
+        );
+    }
+
+    body[data-page="help-center"] .hero {
+        --hero-photo: image-set(
+            url("/images/hero-banners/help-center.webp") type("image/webp"),
+            url("/images/hero-banners/help-center.jpg") type("image/jpeg")
+        );
+    }
+
+    body[data-page="terms"] .hero {
+        --hero-photo: image-set(
+            url("/images/hero-banners/terms.webp") type("image/webp"),
+            url("/images/hero-banners/terms.jpg") type("image/jpeg")
+        );
+    }
+
+    body[data-page="blog"] .hero {
+        --hero-photo: image-set(
+            url("/images/hero-banners/blog.webp") type("image/webp"),
+            url("/images/hero-banners/blog.jpg") type("image/jpeg")
+        );
+    }
 }
 
 .hero .container {
@@ -1699,15 +1774,14 @@ body.has-custom-cursor .scroll-top {
     border: 0;
 }
 
-/* Animation */
+/* Animation — keep content visible; scroll only adds motion */
 [data-animate] {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(12px);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 [data-animate].fade-in {
-    opacity: 1;
     transform: translateY(0);
 }
 
