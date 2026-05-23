@@ -11,6 +11,20 @@ const sharp = require('sharp');
 const ROOT = path.join(__dirname, '..');
 const IMG_ROOT = path.join(ROOT, 'images');
 
+/** Designer source trees (sync-images-from-source.cjs) — skip if re-added locally */
+const SKIP_DIR_NAMES = new Set([
+  'Game Card',
+  'Hero Banners',
+  'Blog',
+  'Firms logo',
+  'Payment logo',
+  'Provider Logo',
+  'Licensing & live audits',
+  'Top games by live category',
+  'All ongoing promotions',
+  'Hot promotion banners',
+]);
+
 async function encodeWebp(srcPath, destPath) {
   const ext = path.extname(srcPath).toLowerCase();
   const buf = await fs.promises.readFile(srcPath);
@@ -32,6 +46,7 @@ async function walk(dir) {
     const full = path.join(dir, ent.name);
     if (ent.isDirectory()) {
       if (ent.name === '.git' || ent.name === 'node_modules') continue;
+      if (SKIP_DIR_NAMES.has(ent.name)) continue;
       await walk(full);
       continue;
     }

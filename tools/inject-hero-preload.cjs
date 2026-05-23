@@ -16,7 +16,7 @@ const hub = [
   ['about-us.html', 'about-us.webp'],
   ['help-center.html', 'help-center.webp'],
   ['terms.html', 'terms.webp'],
-  ['blog/index.html', 'home.webp'],
+  ['blog/index.html', 'blog.webp'],
 ];
 
 function injectHub(rel, webp) {

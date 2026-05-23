@@ -690,8 +690,8 @@ body[data-page="terms"] .hero {
 
 body[data-page="blog"] .hero {
     --hero-photo: image-set(
-        url("/images/hero-banners/home.webp") type("image/webp"),
-        url("/images/hero-banners/home.jpg") type("image/jpeg")
+        url("/images/hero-banners/blog.webp") type("image/webp"),
+        url("/images/hero-banners/blog.jpg") type("image/jpeg")
     );
 }
 
