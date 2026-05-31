@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -69,6 +71,9 @@ jobs:
           POSTS_COLLECTION: ${{ vars.STRAPI_COLLECTION }}
           SYNC_REQUIRE_SITE_FILTER: "1"
 
+      - name: Pull latest before sync
+        run: git pull --rebase origin "${GITHUB_REF_NAME}"
+
       - name: Daily sync (1 new + refresh changed)
         run: npm run sync:daily
         env:
@@ -91,7 +96,8 @@ jobs:
             echo "No content changes to commit."
           else
             git commit -m "chore: daily blog sync from Strapi"
-            git push
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
 
       - name: Check Cloudflare secrets
