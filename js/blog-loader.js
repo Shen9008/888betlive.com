@@ -1,5 +1,5 @@
 /**
- * 888bet Live — blog index: load blogs.json, sort by published_date (then cms_updated_at, synced_at),
+ * 888bet Live — blog index: load blogs.json, sort by synced_at (newest sync first),
  * paginate (6 per URL ?page=). Ellipsis + jump when many pages.
  */
 (function () {
@@ -12,15 +12,9 @@
     var LARGE_ARCHIVE_THRESHOLD = 99;
 
     function sortBlogsForIndex(a, b) {
-        var pb = new Date(b.published_date || 0).getTime();
-        var pa = new Date(a.published_date || 0).getTime();
-        if (pb !== pa) return pb - pa;
-        var cb = new Date(b.cms_updated_at || 0).getTime();
-        var ca = new Date(a.cms_updated_at || 0).getTime();
-        if (cb !== ca) return cb - ca;
-        var sb = new Date(b.synced_at || 0).getTime();
-        var sa = new Date(a.synced_at || 0).getTime();
-        if (sb !== sa) return sb - sa;
+        var tb = new Date(b.synced_at || b.published_date || 0).getTime();
+        var ta = new Date(a.synced_at || a.published_date || 0).getTime();
+        if (tb !== ta) return tb - ta;
         return String(a.slug).localeCompare(String(b.slug));
     }
 

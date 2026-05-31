@@ -20,15 +20,9 @@ const BLOGS_JSON_FIELDS = [
 ];
 
 function sortBlogsForIndex(a, b) {
-  const pb = new Date(b.published_date || 0).getTime();
-  const pa = new Date(a.published_date || 0).getTime();
-  if (pb !== pa) return pb - pa;
-  const cb = new Date(b.cms_updated_at || 0).getTime();
-  const ca = new Date(a.cms_updated_at || 0).getTime();
-  if (cb !== ca) return cb - ca;
-  const sb = new Date(b.synced_at || 0).getTime();
-  const sa = new Date(a.synced_at || 0).getTime();
-  if (sb !== sa) return sb - sa;
+  const tb = new Date(b.synced_at || b.published_date || 0).getTime();
+  const ta = new Date(a.synced_at || a.published_date || 0).getTime();
+  if (tb !== ta) return tb - ta;
   return String(a.slug).localeCompare(String(b.slug));
 }
 
