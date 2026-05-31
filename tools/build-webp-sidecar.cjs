@@ -1,6 +1,5 @@
 /**
- * Writes a sibling .webp next to each .jpg / .jpeg / .png under /images (same relative path).
- * Enables <picture> + CSS image-set(...) without renaming originals.
+ * Converts each .jpg / .jpeg / .png under /images to a sibling .webp and removes the original.
  *
  * SEO: Runs before deploy — see seo-task.md Step 4 / package.json build:webp
  */
@@ -12,6 +11,9 @@ const ROOT = path.join(__dirname, '..');
 const IMG_ROOT = path.join(ROOT, 'images');
 
 /** Designer source trees (sync-images-from-source.cjs) — skip if re-added locally */
+/** Keep originals that must stay as JPEG/PNG (e.g. favicon). */
+const KEEP_ORIGINAL_BASENAMES = new Set(['favicon.jpg']);
+
 const SKIP_DIR_NAMES = new Set([
   'Game Card',
   'Hero Banners',
@@ -56,7 +58,18 @@ async function walk(dir) {
     const rel = path.relative(ROOT, full);
     try {
       await encodeWebp(full, out);
-      console.log('OK', rel.replace(/\\/g, '/'), '->', path.relative(ROOT, out).replace(/\\/g, '/'));
+      if (!KEEP_ORIGINAL_BASENAMES.has(ent.name)) {
+        await fs.promises.unlink(full);
+        console.log(
+          'OK',
+          rel.replace(/\\/g, '/'),
+          '->',
+          path.relative(ROOT, out).replace(/\\/g, '/'),
+          '(removed original)',
+        );
+      } else {
+        console.log('OK', rel.replace(/\\/g, '/'), '->', path.relative(ROOT, out).replace(/\\/g, '/'), '(kept original)');
+      }
     } catch (e) {
       console.error('FAIL', full, e.message);
       process.exitCode = 1;

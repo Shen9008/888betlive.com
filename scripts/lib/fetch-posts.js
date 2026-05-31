@@ -33,6 +33,7 @@ function getPostsSyncConfig(opts = {}) {
     filterKey = DEFAULT_FILTER_KEY;
   } else {
     filterKey = String(rawKey).trim();
+    if (!filterKey) filterKey = DEFAULT_FILTER_KEY;
   }
 
   const applySiteFilter = Boolean(siteDomain && !skipFilter && filterKey);
@@ -93,6 +94,7 @@ async function fetchPosts(opts = {}) {
       url.searchParams.set(cfg.filterKey, cfg.siteDomain);
     }
     url.searchParams.set('sort', 'publishedAt:asc');
+    url.searchParams.set('populate', 'site');
     url.searchParams.set('pagination[page]', String(page));
     url.searchParams.set('pagination[pageSize]', String(pageSize));
 
@@ -132,8 +134,31 @@ async function fetchPosts(opts = {}) {
   return allPosts;
 }
 
+/**
+ * Fail fast when CI requires a site-scoped posts query (SYNC_REQUIRE_SITE_FILTER=1).
+ */
+function assertPostsSiteFilter() {
+  const cfg = getPostsSyncConfig();
+  const requireFilter = /^1|true|yes$/i.test(String(process.env.SYNC_REQUIRE_SITE_FILTER || '').trim());
+  if (!requireFilter) return;
+
+  if (!cfg.siteDomain) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER: SITE_DOMAIN is empty.');
+  }
+  if (cfg.skipFilter) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER: SKIP_POSTS_SITE_FILTER must not be enabled.');
+  }
+  if (!cfg.filterKey) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER: POSTS_SITE_FILTER_KEY is missing.');
+  }
+  if (!cfg.applySiteFilter) {
+    throw new Error('SYNC_REQUIRE_SITE_FILTER: site filter is not applied to the posts request.');
+  }
+}
+
 module.exports = {
   fetchPosts,
   getPostsSyncConfig,
   buildSamplePostsUrl,
+  assertPostsSiteFilter,
 };

@@ -1,6 +1,6 @@
 /**
  * Sync designer Title Case sources under Images/ → canonical lowercase deploy paths.
- * Optimizes rasters (resize + compress) and writes sibling .webp sidecars.
+ * Optimizes rasters (resize + compress) and writes WebP output only.
  *
  * Run: node tools/sync-images-from-source.cjs
  */
@@ -61,18 +61,10 @@ async function writeOptimized(srcPath, destBase, preset) {
   fs.mkdirSync(path.dirname(destBase), { recursive: true });
 
   const useJpeg = preset.format === 'jpeg';
-  const fallbackPath = destBase + (useJpeg ? '.jpg' : '.png');
   const webpPath = destBase + '.webp';
-  const tmpFallback = path.join(os.tmpdir(), `888bet-sync-${process.pid}-${path.basename(fallbackPath)}`);
   const tmpWebp = path.join(os.tmpdir(), `888bet-sync-${process.pid}-${path.basename(webpPath)}`);
 
   try {
-    if (useJpeg) {
-      await img.clone().jpeg({ quality: preset.jpegQuality || 85, mozjpeg: true }).toFile(tmpFallback);
-    } else {
-      await img.clone().png({ compressionLevel: 9, quality: preset.pngQuality || 90 }).toFile(tmpFallback);
-    }
-
     const hasAlpha = !useJpeg && meta.hasAlpha;
     await img
       .clone()
@@ -83,19 +75,16 @@ async function writeOptimized(srcPath, destBase, preset) {
       })
       .toFile(tmpWebp);
 
-    await fs.promises.copyFile(tmpFallback, fallbackPath);
     await fs.promises.copyFile(tmpWebp, webpPath);
   } finally {
-    for (const tmp of [tmpFallback, tmpWebp]) {
-      try {
-        await fs.promises.unlink(tmp);
-      } catch (_) {
-        /* ignore */
-      }
+    try {
+      await fs.promises.unlink(tmpWebp);
+    } catch (_) {
+      /* ignore */
     }
   }
 
-  return { fallbackPath, webpPath };
+  return { webpPath };
 }
 
 const HERO_SOURCES = {
@@ -232,7 +221,7 @@ async function syncBlogCovers() {
     const destBase = path.join(blogDest, slug);
     const src = path.join(blogSrc, name);
     await writeOptimized(src, destBase, PRESETS.blog);
-    mapped[slug] = `/images/blog-covers/${slug}.jpg`;
+    mapped[slug] = `/images/blog-covers/${slug}.webp`;
     console.log('blog', name, '->', path.relative(ROOT, destBase));
   }
   return mapped;

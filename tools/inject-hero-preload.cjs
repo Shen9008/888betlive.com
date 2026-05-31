@@ -26,7 +26,7 @@ function injectHub(rel, webp) {
   if (s.includes(`href="${href}"`) && s.includes('rel="preload"')) {
     return;
   }
-  const block = `    <!-- SEO / perf: LCP hero preload (WebP; JPEG fallback in CSS image-set) -->\n    <link rel="preload" as="image" href="${href}" type="image/webp">\n`;
+  const block = `    <!-- SEO / perf: LCP hero preload (WebP) -->\n    <link rel="preload" as="image" href="${href}" type="image/webp">\n`;
   const next = s.replace(/(\n\s*<link rel="canonical" href="[^"]+"\s*>)/, `$1\n${block}`);
   if (next === s) {
     console.warn('No canonical match:', rel);

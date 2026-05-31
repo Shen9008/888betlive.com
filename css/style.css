@@ -519,9 +519,6 @@ body.menu-open::before {
     color: #fdba74;
     border-color: rgba(234, 88, 12, 0.45);
     background: linear-gradient(95deg, rgba(234, 88, 12, 0.22) 0%, rgba(234, 88, 12, 0.05) 55%, transparent 100%);
-    box-shadow:
-        inset 3px 0 0 var(--primary),
-        0 0 28px rgba(234, 88, 12, 0.12);
 }
 
 .mobile-menu__link--active .mobile-menu__icon-wrap {
@@ -670,104 +667,39 @@ main {
 }
 
 body[data-page="index"] .hero {
-    --hero-photo: url("/images/hero-banners/home.jpg");
+    --hero-photo: url("/images/hero-banners/home.webp");
 }
 
 body[data-page="slots"] .hero {
-    --hero-photo: url("/images/hero-banners/slot.jpg");
+    --hero-photo: url("/images/hero-banners/slot.webp");
 }
 
 body[data-page="live-casino"] .hero {
-    --hero-photo: url("/images/hero-banners/live-casino.jpg");
+    --hero-photo: url("/images/hero-banners/live-casino.webp");
 }
 
 body[data-page="table-games"] .hero {
-    --hero-photo: url("/images/hero-banners/table-games.jpg");
+    --hero-photo: url("/images/hero-banners/table-games.webp");
 }
 
 body[data-page="promotions"] .hero {
-    --hero-photo: url("/images/hero-banners/promotions.jpg");
+    --hero-photo: url("/images/hero-banners/promotions.webp");
 }
 
 body[data-page="about-us"] .hero {
-    --hero-photo: url("/images/hero-banners/about-us.jpg");
+    --hero-photo: url("/images/hero-banners/about-us.webp");
 }
 
 body[data-page="help-center"] .hero {
-    --hero-photo: url("/images/hero-banners/help-center.jpg");
+    --hero-photo: url("/images/hero-banners/help-center.webp");
 }
 
 body[data-page="terms"] .hero {
-    --hero-photo: url("/images/hero-banners/terms.jpg");
+    --hero-photo: url("/images/hero-banners/terms.webp");
 }
 
 body[data-page="blog"] .hero {
-    --hero-photo: url("/images/hero-banners/blog.jpg");
-}
-
-@supports (background-image: image-set(url("/images/hero-banners/home.webp") type("image/webp"))) {
-    body[data-page="index"] .hero {
-        --hero-photo: image-set(
-            url("/images/hero-banners/home.webp") type("image/webp"),
-            url("/images/hero-banners/home.jpg") type("image/jpeg")
-        );
-    }
-
-    body[data-page="slots"] .hero {
-        --hero-photo: image-set(
-            url("/images/hero-banners/slot.webp") type("image/webp"),
-            url("/images/hero-banners/slot.jpg") type("image/jpeg")
-        );
-    }
-
-    body[data-page="live-casino"] .hero {
-        --hero-photo: image-set(
-            url("/images/hero-banners/live-casino.webp") type("image/webp"),
-            url("/images/hero-banners/live-casino.jpg") type("image/jpeg")
-        );
-    }
-
-    body[data-page="table-games"] .hero {
-        --hero-photo: image-set(
-            url("/images/hero-banners/table-games.webp") type("image/webp"),
-            url("/images/hero-banners/table-games.jpg") type("image/jpeg")
-        );
-    }
-
-    body[data-page="promotions"] .hero {
-        --hero-photo: image-set(
-            url("/images/hero-banners/promotions.webp") type("image/webp"),
-            url("/images/hero-banners/promotions.jpg") type("image/jpeg")
-        );
-    }
-
-    body[data-page="about-us"] .hero {
-        --hero-photo: image-set(
-            url("/images/hero-banners/about-us.webp") type("image/webp"),
-            url("/images/hero-banners/about-us.jpg") type("image/jpeg")
-        );
-    }
-
-    body[data-page="help-center"] .hero {
-        --hero-photo: image-set(
-            url("/images/hero-banners/help-center.webp") type("image/webp"),
-            url("/images/hero-banners/help-center.jpg") type("image/jpeg")
-        );
-    }
-
-    body[data-page="terms"] .hero {
-        --hero-photo: image-set(
-            url("/images/hero-banners/terms.webp") type("image/webp"),
-            url("/images/hero-banners/terms.jpg") type("image/jpeg")
-        );
-    }
-
-    body[data-page="blog"] .hero {
-        --hero-photo: image-set(
-            url("/images/hero-banners/blog.webp") type("image/webp"),
-            url("/images/hero-banners/blog.jpg") type("image/jpeg")
-        );
-    }
+    --hero-photo: url("/images/hero-banners/blog.webp");
 }
 
 .hero .container {
@@ -3901,26 +3833,48 @@ a.blog-pagination__btn:focus-visible {
     position: relative;
     padding: clamp(1.5rem, 5vw, 2.75rem) 0 clamp(1.75rem, 4vw, 2.5rem);
     overflow: hidden;
+    background: var(--darker-bg);
 }
 
 .blog-hero__glow {
     position: absolute;
     inset: 0;
+    z-index: 0;
     pointer-events: none;
     background:
-        radial-gradient(ellipse 70% 60% at 15% 20%, rgba(234, 88, 12, 0.16), transparent 55%),
-        radial-gradient(ellipse 55% 50% at 88% 8%, rgba(251, 146, 60, 0.1), transparent 50%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 45%, rgba(0, 0, 0, 0.35) 100%);
+        radial-gradient(ellipse 45% 35% at 8% -5%, rgba(234, 88, 12, 0.14), transparent 65%),
+        radial-gradient(ellipse 35% 30% at 92% 0%, rgba(251, 146, 60, 0.08), transparent 60%);
 }
 
 .blog-hero__container {
     position: relative;
     z-index: 1;
-    max-width: min(52rem, 100%);
+}
+
+/* Match site .container (1200px) — do not shrink below full content column */
+.blog-article-page .blog-hero > .container.blog-hero__container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    box-sizing: border-box;
 }
 
 .blog-hero__breadcrumb {
     margin-bottom: 1.25rem;
+}
+
+/* Breadcrumb ends at Blog — full title is in h1 */
+.blog-hero__breadcrumb .blog-breadcrumb__current,
+.blog-hero__breadcrumb .blog-breadcrumb__list > li[aria-hidden="true"]:has(+ .blog-breadcrumb__current) {
+    display: none;
+}
+
+.blog-hero__breadcrumb .blog-breadcrumb__list a {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.blog-hero__breadcrumb .blog-breadcrumb__list a:hover {
+    color: var(--accent);
 }
 
 .blog-hero__meta-row {
@@ -3939,8 +3893,8 @@ a.blog-pagination__btn:focus-visible {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);
-    background: var(--accent-muted);
-    border: 1px solid rgba(234, 88, 12, 0.28);
+    background: rgba(234, 88, 12, 0.12);
+    border: 1px solid rgba(234, 88, 12, 0.35);
     padding: 0.3rem 0.65rem;
     border-radius: 999px;
 }
@@ -3949,14 +3903,13 @@ a.blog-pagination__btn:focus-visible {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: var(--text-muted);
-    opacity: 0.7;
+    background: rgba(255, 255, 255, 0.45);
 }
 
 .blog-hero__read {
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.65);
     letter-spacing: 0.02em;
 }
 
@@ -3967,15 +3920,27 @@ a.blog-pagination__btn:focus-visible {
     letter-spacing: -0.03em;
     color: var(--text-primary);
     margin: 0 0 1rem;
-    text-wrap: balance;
+    text-wrap: pretty;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: none;
 }
 
 .blog-hero__deck {
     font-size: clamp(1rem, 2vw, 1.12rem);
-    line-height: 1.6;
-    color: var(--text-secondary);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.78);
     margin: 0 0 1.5rem;
-    max-width: 48rem;
+    width: 100%;
+    max-width: none;
+    position: relative;
+    z-index: 1;
+}
+
+.blog-hero__meta-row,
+.blog-hero__breadcrumb {
+    width: 100%;
 }
 
 .blog-hero__toolbar {
@@ -3984,14 +3949,15 @@ a.blog-pagination__btn:focus-visible {
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
+    width: 100%;
     padding-top: 1.25rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .blog-hero__date {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.62);
 }
 
 .blog-media {

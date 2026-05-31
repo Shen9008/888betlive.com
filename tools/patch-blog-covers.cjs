@@ -28,12 +28,12 @@ let changed = false;
 
 for (const post of posts) {
   const slug = post.slug;
-  const localJpg = path.join(ROOT, 'images', 'blog-covers', `${slug}.jpg`);
-  if (!fs.existsSync(localJpg)) {
+  const localWebp = path.join(ROOT, 'images', 'blog-covers', `${slug}.webp`);
+  if (!fs.existsSync(localWebp)) {
     console.warn('no cover file for', slug);
     continue;
   }
-  const coverUrl = `${SITE}/images/blog-covers/${slug}.jpg`;
+  const coverUrl = `${SITE}/images/blog-covers/${slug}.webp`;
   if (post.cover_image !== coverUrl) {
     post.cover_image = coverUrl;
     changed = true;

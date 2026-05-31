@@ -3,7 +3,7 @@
 require('./load-env.js');
 
 /** Site-local fallback when a post has no CMS image */
-const DEFAULT_POST_IMAGE_PATH = '/images/post-default.png';
+const DEFAULT_POST_IMAGE_PATH = '/images/post-default.webp';
 
 function strapiPublicBase() {
   const explicit = process.env.STRAPI_UPLOAD_BASE_URL || process.env.STRAPI_PUBLIC_URL;

@@ -1,5 +1,5 @@
 /**
- * 888bet Live — blog index: load blogs.json, sort like content-sync,
+ * 888bet Live — blog index: load blogs.json, sort by published_date (then cms_updated_at, synced_at),
  * paginate (6 per URL ?page=). Ellipsis + jump when many pages.
  */
 (function () {
@@ -11,11 +11,17 @@
     /** From this many pages, use a tighter number strip + emphasized jump UI */
     var LARGE_ARCHIVE_THRESHOLD = 99;
 
-    function sortBlogsByLatestSyncFirst(a, b) {
-        var tb = new Date(b.synced_at || b.published_date || 0).getTime();
-        var ta = new Date(a.synced_at || a.published_date || 0).getTime();
-        if (tb !== ta) return tb - ta;
-        return String(b.slug).localeCompare(String(a.slug));
+    function sortBlogsForIndex(a, b) {
+        var pb = new Date(b.published_date || 0).getTime();
+        var pa = new Date(a.published_date || 0).getTime();
+        if (pb !== pa) return pb - pa;
+        var cb = new Date(b.cms_updated_at || 0).getTime();
+        var ca = new Date(a.cms_updated_at || 0).getTime();
+        if (cb !== ca) return cb - ca;
+        var sb = new Date(b.synced_at || 0).getTime();
+        var sa = new Date(a.synced_at || 0).getTime();
+        if (sb !== sa) return sb - sa;
+        return String(a.slug).localeCompare(String(b.slug));
     }
 
     function formatDate(iso) {
@@ -105,7 +111,7 @@
         }
     }
 
-    var DEFAULT_THUMB = '/images/post-default.png';
+    var DEFAULT_THUMB = '/images/post-default.webp';
 
     function resolveListingThumbSrc(cover_image) {
         var s = cover_image && String(cover_image).trim();
@@ -456,7 +462,7 @@
             })
             .then(function (data) {
                 var blogs = Array.isArray(data) ? data.slice() : [];
-                blogs.sort(sortBlogsByLatestSyncFirst);
+                blogs.sort(sortBlogsForIndex);
                 if (blogs.length === 0) {
                     renderEmpty(mount, nav, 'No posts yet. Run the content sync when your CMS is connected.');
                     return;

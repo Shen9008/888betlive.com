@@ -1,6 +1,6 @@
 /**
- * SEO: wrap root /images/*.jpg|png in <picture> when sidecar .webp exists; fill empty alts on tiles/promos.
- * Idempotent — does not double-wrap imgs already inside <picture>.
+ * SEO: point /images/*.jpg|png at sibling .webp when present; fill empty alts on tiles/promos.
+ * Idempotent — unwraps legacy <picture> fallbacks and rewrites image URLs to WebP.
  */
 const fs = require('fs');
 const path = require('path');
@@ -77,31 +77,35 @@ function fileExistsForUrl(urlPath) {
   return fs.existsSync(path.join(ROOT, rel));
 }
 
-function insidePicture(html, offset) {
-  const before = html.slice(0, offset);
-  const lastOpen = before.lastIndexOf('<picture');
-  const lastClose = before.lastIndexOf('</picture>');
-  return lastOpen !== -1 && lastOpen > lastClose;
+function rewriteImageUrl(url) {
+  const webpUrl = webpPathForSrc(url);
+  if (!webpUrl || !fileExistsForUrl(webpUrl)) return url;
+  return webpUrl;
+}
+
+function unwrapPictureTags(html) {
+  return html.replace(
+    /<picture>\s*<source type="image\/webp" srcset="([^"]+)"\s*\/?>\s*(<img\b[^>]*>)\s*<\/picture>/gi,
+    (_match, webpUrl, imgTag) => imgTag.replace(/\bsrc="[^"]+"/i, `src="${webpUrl}"`),
+  );
+}
+
+function rewriteImageUrls(html) {
+  return html.replace(/\/images\/[^"'\s)]+\.(?:jpe?g|png)/gi, (url) => rewriteImageUrl(url));
 }
 
 function processHtml(html) {
-  return html.replace(/<img\b[^>]*>/gi, (tag, offset) => {
+  let next = unwrapPictureTags(html);
+  next = next.replace(/<img\b[^>]*>/gi, (tag) => {
     let out = enrichAlt(tag);
-
-    if (insidePicture(html, offset)) {
-      return out;
-    }
-
     const srcM = /\bsrc="(\/[^"]+)"/i.exec(out);
     if (!srcM) return out;
-
-    const webpUrl = webpPathForSrc(srcM[1]);
-    if (!webpUrl || !fileExistsForUrl(webpUrl)) {
-      return out;
-    }
-
-    return `<picture>\n<source type="image/webp" srcset="${webpUrl}" />${out}\n</picture>`;
+    const webpUrl = rewriteImageUrl(srcM[1]);
+    if (webpUrl === srcM[1]) return out;
+    return out.replace(/\bsrc="[^"]+"/i, `src="${webpUrl}"`);
   });
+  next = rewriteImageUrls(next);
+  return next;
 }
 
 function main() {
