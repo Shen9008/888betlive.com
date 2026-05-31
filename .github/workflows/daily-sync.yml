@@ -32,7 +32,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
+          persist-credentials: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -72,7 +74,12 @@ jobs:
           SYNC_REQUIRE_SITE_FILTER: "1"
 
       - name: Pull latest before sync
-        run: git pull --rebase origin "${GITHUB_REF_NAME}"
+        run: |
+          set -euo pipefail
+          BRANCH="${GITHUB_REF_NAME}"
+          git fetch origin "${BRANCH}"
+          git checkout "${BRANCH}"
+          git pull --ff-only origin "${BRANCH}"
 
       - name: Daily sync (1 new + refresh changed)
         run: npm run sync:daily
@@ -89,16 +96,29 @@ jobs:
 
       - name: Commit synced content
         run: |
+          set -euo pipefail
+          BRANCH="${GITHUB_REF_NAME}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout "${BRANCH}"
           git add assets/data/blogs.json sitemap.xml blog/
           if git diff --staged --quiet; then
             echo "No content changes to commit."
-          else
-            git commit -m "chore: daily blog sync from Strapi"
-            git pull --rebase origin "${GITHUB_REF_NAME}"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
+            exit 0
           fi
+          git commit -m "chore: daily blog sync from Strapi"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "${BRANCH}"
+            git rebase "origin/${BRANCH}"
+            if git push origin "HEAD:${BRANCH}"; then
+              echo "Push succeeded on attempt ${attempt}."
+              exit 0
+            fi
+            echo "Push rejected (attempt ${attempt}); retrying..."
+            sleep $((attempt * 2))
+          done
+          echo "::error::Failed to push after 5 attempts."
+          exit 1
 
       - name: Check Cloudflare secrets
         run: |
