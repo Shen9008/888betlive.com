@@ -22,7 +22,9 @@
     "backfill": "node scripts/backfill-internal-links.js",
     "backfill:force": "node scripts/backfill-internal-links.js --force",
     "audit:links": "node scripts/audit-internal-links.js",
-    "seo:blog-meta": "node tools/patch-blog-seo.cjs"
+    "seo:blog-meta": "node tools/patch-blog-seo.cjs",
+    "seo:meta-ctr": "node tools/patch-meta-ctr.cjs",
+    "indexnow:submit": "node tools/submit-indexnow.cjs"
   },
   "keywords": [
     "888bet",
